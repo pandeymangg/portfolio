@@ -1,10 +1,11 @@
 import React from "react";
 import { BsCheckCircle } from "react-icons/bs";
+import HomeCard from "./HomeCard";
 
 const Home = ({ postsData }) => {
   return (
-    <section className="home pt-32 flex flex-col justify-center px-8 bg-white">
-      <div className="max-w-2xl mx-auto flex flex-col gap-8">
+    <section className="home pt-32 flex flex-col px-8 bg-white">
+      <div className="max-w-2xl flex flex-col mx-auto gap-8">
         <div>
           <h1 className="text-5xl font-bold tracking-tight text-black text-center">
             Blog
@@ -40,16 +41,11 @@ const Home = ({ postsData }) => {
           </div>
         </div>
 
-        {/* <div>
+        <div>
           {postsData.map((post, index) => {
-            return (
-              <div key={index}>
-                {post.data.title}
-                {post.data.description}
-              </div>
-            );
+            return <HomeCard key={index} post={post} />;
           })}
-        </div> */}
+        </div>
       </div>
     </section>
   );

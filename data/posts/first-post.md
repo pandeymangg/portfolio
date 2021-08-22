@@ -1,5 +1,5 @@
 ---
-title: My first post!
+title: How I made a static blog site with next.js!
 date: 21 August 2021
 description: This is my first blog post. This blog is made using markdown and next.js and styled using tailwindcss.
 ---
