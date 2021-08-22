@@ -1,20 +1,14 @@
 import { getPostsData } from "../../data";
+import Layout from "../components/Layout";
+import Home from "../components/Home";
+import Header from "../components/Header";
 
-export default function Home({ postsData }) {
+export default function HomePage({ postsData }) {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-gray-900">My Blog</h1>
-      <div>
-        {postsData.map((post, index) => {
-          return (
-            <div key={index}>
-              {post.data.title}
-              {post.data.description}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <Layout docTitle="Blog" metaDescription="Blogs by Anshuman Pandey">
+      <Header />
+      <Home postsData={postsData} />
+    </Layout>
   );
 }
 
