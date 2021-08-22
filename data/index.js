@@ -12,9 +12,11 @@ export const getPostsData = () => {
       .toString();
 
     const { data, content } = matter(contents);
+    const fileSlug = fileName.replace(".md", "");
     return {
       data,
       content,
+      slug: fileSlug,
     };
   });
 
