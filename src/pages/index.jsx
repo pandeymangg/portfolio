@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Home from "../components/Home";
 import Experience from "../components/Experience";
 import Skills from "../components/Skills";
+import Projects from "../components/Projects";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Home />
       <Experience />
       <Skills />
+      <Projects />
     </Layout>
   );
 }
