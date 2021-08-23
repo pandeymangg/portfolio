@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 
 const Blog = ({ postsData }) => {
   return (
-    <section className="home pt-32 flex flex-col px-8 bg-white">
+    <section className="blog pt-32 flex flex-col px-8 bg-white">
       <div className="max-w-2xl flex flex-col mx-auto gap-8">
         <div>
           <h1 className="text-5xl font-bold tracking-tight text-black text-center">
