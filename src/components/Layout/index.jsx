@@ -4,7 +4,7 @@ import Head from "next/head";
 const Layout = ({ docTitle, metaDescription, bgColor = "#fff", children }) => {
   return (
     <div
-      className="layout overflow-hidden"
+      className="layout"
       style={{
         backgroundColor: bgColor,
       }}

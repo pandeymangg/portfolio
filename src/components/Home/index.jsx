@@ -3,7 +3,7 @@ import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
 const Home = () => {
   return (
-    <section id="home" className="home pt-32 flex flex-col px-8 bg-white mb-8">
+    <section id="home" className="home pt-20 flex flex-col px-8 bg-white">
       <div className="max-w-2xl flex flex-col mx-auto">
         <div className="img-container flex items-center justify-center w-full">
           <div className="w-48 h-48 rounded-full shadow-xl border-4 border-primary mb-10 overflow-hidden">
@@ -43,7 +43,7 @@ const Home = () => {
                 Connect with me:{" "}
               </p>
             </div>
-            <div className="flex gap-4 mb-8">
+            <div className="flex gap-4">
               <div className="rounded-lg w-20 h-14 border-4 border-black hover:bg-primary hover:border-primary cursor-pointer flex justify-center items-center">
                 <AiFillGithub size={"2rem"} />
               </div>

@@ -4,7 +4,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="projects w-full mx-auto flex flex-col px-8 bg-white mb-8"
+      className="projects pt-20 w-full mx-auto flex flex-col px-8 bg-white"
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start gap-8">
         <div>
