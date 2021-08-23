@@ -26,7 +26,7 @@ const headerLinksArray = [
 
 const Header = () => {
   return (
-    <nav className="max-w-4xl w-ful h-20 flex items-center mx-auto my-0 bg-white bg-opacity-60 z-10 header-backdrop sticky-nav">
+    <nav className="max-w-4xl px-8 w-ful h-20 flex items-center mx-auto my-0 bg-white bg-opacity-60 z-10 header-backdrop sticky-nav">
       <div className="nav-container w-full flex justify-between items-center">
         <div className="nav-heading">
           <h1 className="text-3xl font-bold text-gray-900">Anshuman Pandey</h1>
