@@ -1,13 +1,12 @@
 import React from "react";
 import DatePill from "../Blog/DatePill";
 import { BsDot } from "react-icons/bs";
-import Link from "next/link";
 
 const Experience = () => {
   return (
     <section
       id="experience"
-      className="home w-full mx-auto flex flex-col px-8 bg-white mb-8"
+      className="experience w-full mx-auto flex flex-col px-8 bg-white mb-8"
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-16">
