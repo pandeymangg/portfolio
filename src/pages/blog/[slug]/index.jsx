@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllPosts, getSinglePost } from "../../../data";
+import { getAllPosts, getSinglePost } from "../../../../data";
 import matter from "gray-matter";
 import Head from "next/head";
 import { serialize } from "next-mdx-remote/serialize";

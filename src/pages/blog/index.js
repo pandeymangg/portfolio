@@ -1,7 +1,7 @@
-import { getPostsData } from "../../data";
-import Layout from "../components/Layout";
-import Home from "../components/Home";
-import Header from "../components/Header";
+import { getPostsData } from "../../../data";
+import Layout from "../../components/Layout";
+import Home from "../../components/Home";
+import Header from "../../components/Header";
 
 export default function HomePage({ postsData }) {
   return (
