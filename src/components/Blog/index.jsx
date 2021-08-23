@@ -1,8 +1,8 @@
 import React from "react";
 import { BsCheckCircle } from "react-icons/bs";
-import HomeCard from "./HomeCard";
+import BlogCard from "./BlogCard";
 
-const Home = ({ postsData }) => {
+const Blog = ({ postsData }) => {
   return (
     <section className="home pt-32 flex flex-col px-8 bg-white">
       <div className="max-w-2xl flex flex-col mx-auto gap-8">
@@ -43,7 +43,7 @@ const Home = ({ postsData }) => {
 
         <div>
           {postsData.map((post, index) => {
-            return <HomeCard key={index} post={post} />;
+            return <BlogCard key={index} post={post} />;
           })}
         </div>
       </div>
@@ -51,4 +51,4 @@ const Home = ({ postsData }) => {
   );
 };
 
-export default Home;
+export default Blog;

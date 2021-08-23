@@ -1,13 +1,13 @@
 import { getPostsData } from "../../../data";
 import Layout from "../../components/Layout";
-import Home from "../../components/Home";
+import Blog from "../../components/Blog";
 import Header from "../../components/Header";
 
-export default function HomePage({ postsData }) {
+export default function BlogPage({ postsData }) {
   return (
     <Layout docTitle="Blog" metaDescription="Blogs by Anshuman Pandey">
       <Header />
-      <Home postsData={postsData} />
+      <Blog postsData={postsData} />
     </Layout>
   );
 }

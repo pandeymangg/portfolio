@@ -1,4 +1,28 @@
 import React from "react";
+import HeaderLinks from "./HeaderLinks";
+
+const headerLinksArray = [
+  {
+    text: "Home",
+    link: "/#home",
+  },
+  {
+    text: "Experience",
+    link: "/#experience",
+  },
+  {
+    text: "Skills",
+    link: "/#skills",
+  },
+  {
+    text: "Projects",
+    link: "/#projects",
+  },
+  {
+    text: "Blog",
+    link: "/blog",
+  },
+];
 
 const Header = () => {
   return (
@@ -9,18 +33,9 @@ const Header = () => {
         </div>
 
         <div className="flex gap-8">
-          <a
-            href="https://anshuman9999.github.io/"
-            className="text-base text-gray-600"
-          >
-            Portfolio
-          </a>
-          <a
-            href="https://github.com/anshuman9999"
-            className="text-base text-gray-600"
-          >
-            Github
-          </a>
+          {headerLinksArray.map((headerLink) => (
+            <HeaderLinks text={headerLink.text} link={headerLink.link} />
+          ))}
         </div>
       </div>
     </nav>

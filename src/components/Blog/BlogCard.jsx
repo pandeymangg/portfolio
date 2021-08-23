@@ -2,7 +2,7 @@ import React from "react";
 import DatePill from "./DatePill";
 import Link from "next/link";
 
-const HomeCard = ({ post }) => {
+const BlogCard = ({ post }) => {
   const { slug } = post;
   return (
     <Link href="/blog/[slug]" as={`/blog/${slug}`}>
@@ -21,4 +21,4 @@ const HomeCard = ({ post }) => {
   );
 };
 
-export default HomeCard;
+export default BlogCard;
