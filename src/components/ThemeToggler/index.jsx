@@ -1,4 +1,5 @@
 import React from "react";
+import { BsMoon, BsSun } from "react-icons/bs";
 
 const ThemeToggler = ({ mounted, theme, setTheme }) => {
   return (
@@ -8,7 +9,15 @@ const ThemeToggler = ({ mounted, theme, setTheme }) => {
           className="cursor-pointer"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-          Toggle
+          {theme === "light" ? (
+            <div className="mt-2 p-1">
+              <BsMoon />
+            </div>
+          ) : (
+            <div className="mt-2 p-1">
+              <BsSun />
+            </div>
+          )}
         </button>
       )}
     </div>
