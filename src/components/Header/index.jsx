@@ -34,10 +34,12 @@ const Header = () => {
     setMounted(true);
   }, []);
   return (
-    <nav className=" h-20 flex mx-auto my-0 z-10 header-backdrop sticky-nav">
-      <div className="nav-container max-w-4xl px-8 mx-auto bg-opacity-60 flex justify-between items-center">
+    <nav className="max-w-4xl px-8 h-20 flex items-center mx-auto my-0 z-10 header-backdrop sticky-nav">
+      <div className="nav-container w-full flex justify-between items-center">
         <div className="nav-heading">
-          <h1 className="text-3xl font-bold text-gray-900">Anshuman Pandey</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
+            Anshuman Pandey
+          </h1>
         </div>
 
         <div className="flex gap-8">
