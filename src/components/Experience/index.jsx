@@ -10,27 +10,29 @@ const Experience = () => {
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8">
-          <h1 className="text-5xl font-bold tracking-tight text-black">
+          <h1 className="text-5xl font-bold tracking-tight text-black dark:text-white">
             Experience
           </h1>
         </div>
 
         <div>
           <div className="mb-4 flex justify-between items-center">
-            <h2 className="text-3xl font-semibold text-gray-900">Quinn</h2>
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-gray-50">
+              Quinn
+            </h2>
             <DatePill date={"May 2021 - August 2021"} />
           </div>
           <div>
-            <ul className="flex flex-col gap-2 text-base text-gray-600">
+            <ul className="flex flex-col gap-2 text-base text-gray-600 dark:text-gray-100">
               <div className="flex gap-2 items-center">
-                <div className="text-black">
+                <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
                 <li>Converted designs to responsive web pages.</li>
               </div>
 
               <div className="flex gap-2 items-center">
-                <div className="text-black">
+                <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
                 <li>
@@ -44,7 +46,7 @@ const Experience = () => {
               </div>
 
               <div className="flex gap-2 items-center">
-                <div className="text-black">
+                <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
                 <li>
@@ -64,7 +66,7 @@ const Experience = () => {
               </div>
 
               <div className="flex gap-2 items-center">
-                <div className="text-black">
+                <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
                 <li>
@@ -79,7 +81,7 @@ const Experience = () => {
               </div>
 
               <div className="flex gap-2 items-center">
-                <div className="text-black">
+                <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
                 <li>
