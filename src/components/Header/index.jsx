@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderLinks from "./HeaderLinks";
+import { useTheme } from "next-themes";
+import ThemeToggler from "../ThemeToggler";
 
 const headerLinksArray = [
   {
@@ -25,14 +27,21 @@ const headerLinksArray = [
 ];
 
 const Header = () => {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
-    <nav className="max-w-4xl px-8 w-ful h-20 flex items-center mx-auto my-0 bg-white bg-opacity-60 z-10 header-backdrop sticky-nav">
-      <div className="nav-container w-full flex justify-between items-center">
+    <nav className=" h-20 flex mx-auto my-0 z-10 header-backdrop sticky-nav">
+      <div className="nav-container max-w-4xl px-8 mx-auto bg-opacity-60 flex justify-between items-center">
         <div className="nav-heading">
           <h1 className="text-3xl font-bold text-gray-900">Anshuman Pandey</h1>
         </div>
 
         <div className="flex gap-8">
+          <ThemeToggler mounted={mounted} theme={theme} setTheme={setTheme} />
           {headerLinksArray.map((headerLink) => (
             <HeaderLinks text={headerLink.text} link={headerLink.link} />
           ))}

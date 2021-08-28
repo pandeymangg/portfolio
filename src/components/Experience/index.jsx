@@ -6,7 +6,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="pt-20 experience w-full mx-auto flex flex-col px-8 bg-white"
+      className="pt-20 experience w-full mx-auto flex flex-col px-8"
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8">

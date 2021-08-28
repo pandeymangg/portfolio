@@ -1,14 +1,9 @@
 import React from "react";
 import Head from "next/head";
 
-const Layout = ({ docTitle, metaDescription, bgColor = "#fff", children }) => {
+const Layout = ({ docTitle, metaDescription, children }) => {
   return (
-    <div
-      className="layout"
-      style={{
-        backgroundColor: bgColor,
-      }}
-    >
+    <div className="layout bg-white dark:bg-gray-900 text-gray-50 dark:text-gray-900">
       <Head>
         {docTitle && <title>{docTitle}</title>}
 

@@ -3,7 +3,7 @@ import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
 const Home = () => {
   return (
-    <section id="home" className="home pt-20 flex flex-col px-8 bg-white">
+    <section id="home" className="home pt-20 flex flex-col px-8">
       <div className="max-w-2xl flex flex-col mx-auto">
         <div className="img-container flex items-center justify-center w-full">
           <div className="w-48 h-48 rounded-full shadow-xl border-4 border-primary mb-10 overflow-hidden">

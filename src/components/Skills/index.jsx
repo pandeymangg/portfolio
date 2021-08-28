@@ -4,7 +4,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="skills pt-20 w-full mx-auto flex flex-col px-8 bg-white"
+      className="skills pt-20 w-full mx-auto flex flex-col px-8"
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8">
