@@ -3,6 +3,7 @@ import HeaderLinks from "./HeaderLinks";
 import { useTheme } from "next-themes";
 import ThemeToggler from "../ThemeToggler";
 import { BiMenu } from "react-icons/bi";
+import classes from "./styles.module.css";
 
 const headerLinksArray = [
   {
@@ -30,12 +31,13 @@ const headerLinksArray = [
 const Header = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [phoneMenu, setPhoneMenu] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
   return (
-    <nav className="max-w-4xl px-8 h-20 flex items-center mx-auto my-0 z-10 header-backdrop sticky-nav">
+    <nav className="max-w-4xl px-8 py-4 md:py-0 md:h-20 flex items-center mx-auto my-0 z-10 header-backdrop sticky-nav">
       <div className="nav-container w-full flex justify-between items-center">
         <div className="nav-heading hidden md:block">
           <h1 className="text-xl md:text-3xl font-bold text-gray-900 dark:text-gray-200">
@@ -61,13 +63,24 @@ const Header = () => {
                 theme={theme}
                 setTheme={setTheme}
               />
-              <div className="text-gray-900 dark:text-gray-200 mt-0.5">
+              <div
+                className="text-gray-900 dark:text-gray-200 mt-0.5"
+                onClick={() => setPhoneMenu(!phoneMenu)}
+              >
                 <BiMenu size={"1.2rem"} />
               </div>
             </div>
           </div>
 
-          <div className="w-full border-2 border-red-700"></div>
+          {phoneMenu && (
+            <div className="pb-4">
+              {headerLinksArray.map((headerLink) => (
+                <div className={`pt-1`}>
+                  <HeaderLinks text={headerLink.text} link={headerLink.link} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </nav>
