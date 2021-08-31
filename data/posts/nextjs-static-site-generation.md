@@ -1,7 +1,7 @@
 ---
-title: How I made a static blog site with next.js!
+title: Next.js static site generation!
 date: 21 August 2021
-description: This is my first blog post. This blog is made using markdown and next.js and styled using tailwindcss.
+description: This post is a detailed guide on generating static sites in next.js.
 ---
 
 # h1 Heading 8-)

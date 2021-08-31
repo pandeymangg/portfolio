@@ -17,12 +17,7 @@ const Projects = () => {
         <div>
           <div className="mb-4">
             <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white">
-              <a
-                href="https://simple-docs.herokuapp.com/"
-                className="project-link hover:text-gray-600 dark:hover:text-gray-200"
-              >
-                Simple Docs
-              </a>
+              Simple Docs
             </h2>
           </div>
           <div>
@@ -49,14 +44,26 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                  View Project
-                </span>
+                <a
+                  href="https://simple-docs.herokuapp.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
+                    View Project
+                  </span>
+                </a>
               </div>
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                  GitHub
-                </span>
+                <a
+                  href="https://github.com/anshuman9999/simple-docs"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
+                    GitHub
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -82,14 +89,26 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                  View Project
-                </span>
+                <a
+                  href="https://yt-playlist-duration.herokuapp.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
+                    View Project
+                  </span>
+                </a>
               </div>
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                  GitHub
-                </span>
+                <a
+                  href="https://github.com/anshuman9999/youtube-playlist-length"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
+                    GitHub
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -114,9 +133,15 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                  GitHub
-                </span>
+                <a
+                  href="https://github.com/anshuman9999/electron-image-shrink"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
+                    GitHub
+                  </span>
+                </a>
               </div>
             </div>
           </div>

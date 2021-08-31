@@ -13,7 +13,7 @@ const Blog = ({ postsData }) => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex gap-2 items-center justify-center">
+          <div className="flex gap-2 items-center md:justify-center">
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
@@ -23,7 +23,7 @@ const Blog = ({ postsData }) => {
               <span className="font-semibold">markdown</span>
             </p>
           </div>
-          <div className="flex gap-2 items-center justify-center">
+          <div className="flex gap-2 items-center md:justify-center">
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
@@ -33,7 +33,7 @@ const Blog = ({ postsData }) => {
               (SSG)
             </p>
           </div>
-          <div className="flex gap-2 items-center justify-center">
+          <div className="flex gap-2 items-center md:justify-center">
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
