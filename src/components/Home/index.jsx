@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import Image from "next/image";
 
 const Home = () => {
   return (
@@ -7,7 +8,12 @@ const Home = () => {
       <div className="max-w-2xl flex flex-col md:mx-auto">
         <div className="img-container flex items-center justify-center w-full">
           <div className="w-48 h-48 rounded-full shadow-xl border-4 border-primary mb-10 overflow-hidden">
-            <img src="/assets/images/photo.jpg" className="w-full h-full"></img>
+            <Image
+              src="/assets/images/photo.jpg"
+              width={192}
+              height={192}
+              alt="Picture of Anshuman Pandey"
+            />
           </div>
         </div>
         <div className="mb-6">

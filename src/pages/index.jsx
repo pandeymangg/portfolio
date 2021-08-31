@@ -8,7 +8,10 @@ import Projects from "../components/Projects";
 
 export default function HomePage() {
   return (
-    <Layout>
+    <Layout
+      docTitle="Anshuman Pandey"
+      metaDescription="Anshuman Pandey, full stack web developer"
+    >
       <Header />
       <Home />
       <Experience />

@@ -6,6 +6,7 @@ const ThemeToggler = ({ mounted, theme, setTheme }) => {
     <div className="text-gray-600 dark:text-gray-100">
       {mounted && (
         <button
+          name="theme-toggler"
           className="cursor-pointer"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >

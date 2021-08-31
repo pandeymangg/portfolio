@@ -24,32 +24,32 @@ const Experience = () => {
           </div>
           <div>
             <ul className="flex flex-col gap-2 text-sm md:text-base text-gray-600 dark:text-gray-100">
-              <div className="flex gap-2 items-center">
+              <li className="flex gap-2 items-center">
                 <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
-                <li>Converted designs to responsive web pages.</li>
-              </div>
+                <p>Converted designs to responsive web pages.</p>
+              </li>
 
-              <div className="flex gap-2 items-center">
+              <li className="flex gap-2 items-center">
                 <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
-                <li>
+                <p>
                   Learnt <span className="font-semibold">tailwindcss</span> and
                   used it to make pixel perfect UI components,{" "}
                   <span className="font-semibold">
                     writing robust, ready to go to production level code
                   </span>
                   .
-                </li>
-              </div>
+                </p>
+              </li>
 
-              <div className="flex gap-2 items-center">
+              <li className="flex gap-2 items-center">
                 <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
-                <li>
+                <p>
                   <span className="font-semibold">
                     Built a blog for the web app
                   </span>
@@ -62,14 +62,14 @@ const Experience = () => {
                     static site generation (SSG) using next.js
                   </span>
                   . Used notion as a CMS for the blog.
-                </li>
-              </div>
+                </p>
+              </li>
 
-              <div className="flex gap-2 items-center">
+              <li className="flex gap-2 items-center">
                 <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
-                <li>
+                <p>
                   Learnt next.js and implemented ways to make the web app more
                   performant,{" "}
                   <span className="font-semibold">
@@ -77,18 +77,18 @@ const Experience = () => {
                     site resources
                   </span>{" "}
                   and so on.
-                </li>
-              </div>
+                </p>
+              </li>
 
-              <div className="flex gap-2 items-center">
+              <li className="flex gap-2 items-center">
                 <div className="text-black dark:text-white">
                   <BsDot size={"2rem"} />
                 </div>
-                <li>
+                <p>
                   Learnt <span className="font-semibold">react query</span> and
                   implemented hooks for data fetching and caching.
-                </li>
-              </div>
+                </p>
+              </li>
             </ul>
           </div>
         </div>
