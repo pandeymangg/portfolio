@@ -9,14 +9,14 @@ const Projects = () => {
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start gap-8">
         <div>
-          <h1 className="text-5xl font-bold tracking-tight text-black dark:text-white">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white">
             Projects
           </h1>
         </div>
 
         <div>
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-black dark:text-white">
+            <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white">
               <a
                 href="https://simple-docs.herokuapp.com/"
                 className="project-link hover:text-gray-600 dark:hover:text-gray-200"
@@ -49,12 +49,12 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-black font-semibold tracking-normal">
+                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
                   View Project
                 </span>
               </div>
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-black font-semibold tracking-normal">
+                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
                   GitHub
                 </span>
               </div>
@@ -63,7 +63,7 @@ const Projects = () => {
         </div>
         <div>
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-black dark:text-white">
+            <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white">
               YouTube Playlist Length
             </h2>
           </div>
@@ -82,12 +82,12 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-black font-semibold tracking-normal">
+                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
                   View Project
                 </span>
               </div>
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-black font-semibold tracking-normal">
+                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
                   GitHub
                 </span>
               </div>
@@ -96,7 +96,7 @@ const Projects = () => {
         </div>
         <div>
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-black dark:text-white">
+            <h2 className="text-lg md:text-2xl font-bold text-black dark:text-white">
               ImageShrinker
             </h2>
           </div>
@@ -114,7 +114,7 @@ const Projects = () => {
 
             <div className="flex">
               <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <span className="text-black font-semibold tracking-normal">
+                <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
                   GitHub
                 </span>
               </div>
