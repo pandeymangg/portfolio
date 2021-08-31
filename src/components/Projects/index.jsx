@@ -5,7 +5,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="projects pt-20 w-full mx-auto flex flex-col px-8 mb-8"
+      className="projects pt-20 w-full mx-auto flex flex-col px-8 pb-8"
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start gap-8">
         <div>

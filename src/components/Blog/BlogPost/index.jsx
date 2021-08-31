@@ -4,7 +4,7 @@ import DatePill from "../DatePill";
 
 const BlogPost = ({ data, source }) => {
   return (
-    <section className="blog-post pt-20 w-full mx-auto flex flex-col px-8 bg-white mb-8">
+    <section className="blog-post pt-20 w-full mx-auto flex flex-col px-8 pb-8">
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8 flex flex-col">
           <h1 className="text-5xl font-bold tracking-tight text-black mb-4">

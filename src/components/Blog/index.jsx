@@ -4,10 +4,10 @@ import BlogCard from "./BlogCard";
 
 const Blog = ({ postsData }) => {
   return (
-    <section className="blog pt-20 flex flex-col px-8 bg-white">
+    <section className="blog pt-20 h-screen flex flex-col px-8">
       <div className="max-w-2xl flex flex-col mx-auto gap-8">
         <div>
-          <h1 className="text-5xl font-bold tracking-tight text-black text-center">
+          <h1 className="text-5xl font-bold tracking-tight text-black dark:text-white text-center">
             Blog
           </h1>
         </div>
@@ -17,7 +17,7 @@ const Blog = ({ postsData }) => {
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               Built with <span className="font-semibold">next.js</span>,{" "}
               <span className="font-semibold">tailwindcss</span>,{" "}
               <span className="font-semibold">markdown</span>
@@ -27,7 +27,7 @@ const Blog = ({ postsData }) => {
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               Static site generated with next.js{" "}
               <span className="font-semibold">static site generation</span>{" "}
               (SSG)
@@ -37,7 +37,7 @@ const Blog = ({ postsData }) => {
             <span className="text-[#097969]">
               <BsCheckCircle />
             </span>
-            <p>Blazing fast</p>
+            <p className="text-gray-900 dark:text-gray-100">Blazing fast</p>
           </div>
         </div>
 
