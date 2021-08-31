@@ -7,7 +7,7 @@ const BlogPost = ({ data, source }) => {
     <section className="blog-post pt-20 w-full mx-auto flex flex-col px-8 pb-8">
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8 flex flex-col">
-          <h1 className="text-5xl font-bold tracking-tight text-black mb-4">
+          <h1 className="text-5xl font-bold tracking-tight text-black dark:text-white mb-4">
             {data.title}
           </h1>
           <div className="flex justify-between items-center">
@@ -17,14 +17,16 @@ const BlogPost = ({ data, source }) => {
               </div>
 
               <div>
-                <span className="text-gray-700 text-sm">Anshuman Pandey</span>
+                <span className="text-gray-700 dark:text-gray-200 text-sm">
+                  Anshuman Pandey
+                </span>
               </div>
             </div>
 
             <DatePill date={data.date} />
           </div>
         </div>
-        <div className="prose">
+        <div className="prose dark:prose-dark">
           <MDXRemote {...source} />
         </div>
       </div>
