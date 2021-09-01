@@ -1,5 +1,6 @@
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
+import Button from "./Button";
 
 const Projects = () => {
   return (
@@ -43,28 +44,14 @@ const Projects = () => {
             </p>
 
             <div className="flex">
-              <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <a
-                  href="https://simple-docs.herokuapp.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                    View Project
-                  </span>
-                </a>
-              </div>
-              <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <a
-                  href="https://github.com/anshuman9999/simple-docs"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                    GitHub
-                  </span>
-                </a>
-              </div>
+              <Button
+                text="View Project"
+                link="https://simple-docs.herokuapp.com/"
+              />
+              <Button
+                text="GitHub"
+                link="https://github.com/anshuman9999/simple-docs"
+              />
             </div>
           </div>
         </div>
@@ -88,28 +75,14 @@ const Projects = () => {
             </p>
 
             <div className="flex">
-              <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <a
-                  href="https://yt-playlist-duration.herokuapp.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                    View Project
-                  </span>
-                </a>
-              </div>
-              <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <a
-                  href="https://github.com/anshuman9999/youtube-playlist-length"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                    GitHub
-                  </span>
-                </a>
-              </div>
+              <Button
+                text="View Project"
+                link="https://yt-playlist-duration.herokuapp.com/"
+              />
+              <Button
+                text="GitHub"
+                link="https://github.com/anshuman9999/youtube-playlist-length"
+              />
             </div>
           </div>
         </div>
@@ -132,17 +105,10 @@ const Projects = () => {
             </p>
 
             <div className="flex">
-              <div className="mr-2 rounded-full px-3 py-1 bg-primary">
-                <a
-                  href="https://github.com/anshuman9999/electron-image-shrink"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="text-xs md:text-sm text-black font-semibold tracking-normal">
-                    GitHub
-                  </span>
-                </a>
-              </div>
+              <Button
+                text="GitHub"
+                link="https://github.com/anshuman9999/electron-image-shrink"
+              />
             </div>
           </div>
         </div>
