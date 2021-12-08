@@ -11,7 +11,7 @@ const BlogCard = ({ post }) => {
           <h4 className="text-base md:text-xl text-gray-900 dark:text-gray-100 font-medium">
             {post.data.title}
           </h4>
-          <div className="w-24 md:w-auto">
+          <div className="w-auto self-start">
             <DatePill date={post.data.date} />
           </div>
         </div>
