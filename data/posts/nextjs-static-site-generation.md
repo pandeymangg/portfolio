@@ -1,110 +1,53 @@
 ---
-title: Next.js static site generation!
-date: 21 August 2021
-description: This post is a detailed guide on generating static sites in next.js.
+title: Determining the system default theme in react.
+date: 8 December 2021
+description: This post is a guide for determining the system default theme in react.
 ---
 
-# h1 Heading 8-)
+Recently, I decided to refactor one of my previous projects, and wanted to make a dark theme for it. I wanted to use the user's system default theme for the default theme of my web app. So, I made a custom hook that determines the default theme of the user.
 
-## h2 Heading
+### How to determine the default system theme?
 
-### h3 Heading
+We can check the default theme by determining the value of the `prefers-color-scheme` media query. It gives the value of the theme that the user has selected for their system.
 
-#### h4 Heading
+`@media (prefers-color-scheme: light)` can be used for determining light theme and similarly, `@media (prefers-color-scheme: dark)` can be used for determining dark theme.
 
-##### h5 Heading
-
-###### h6 Heading
-
-## Horizontal Rules
-
----
-
----
-
----
-
-## Typographic replacements
-
-Enable typographer option to see result.
-
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
-
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,, -- ---
-
-"Smartypants, double quotes" and 'single quotes'
-
-## Emphasis
-
-**This is bold text**
-
-**This is bold text**
-
-_This is italic text_
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-
-## Lists
-
-Unordered
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
+We'll check the value of this media query using the `window.matchMedia` function in javascript (react in this case). This can be easily achieved using the code snippet below:
 
 ```js
-var foo = function (bar) {
-  return bar++;
-};
+const darkThemeMatch = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-console.log(foo(5));
+if (darkThemeMatch) // Default theme is set to dark.
+else // Default theme is set to light.
 ```
+
+**useDefaultTheme hook**
+
+```js
+import { useEffect, useState } from "react";
+
+export const useDefaultTheme = () => {
+  const getCurrentTheme = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+  const [currentTheme, setCurrentTheme] = useState(getCurrentTheme());
+
+  const matchListener = (e) => {
+    const theme = e.matches ? "dark" : "light";
+    setCurrentTheme(theme);
+  };
+
+  useEffect(() => {
+    const darkThemeMatch = window.matchMedia("(prefers-color-scheme: dark)");
+
+    darkThemeMatch.addEventListener("change", matchListener);
+    return () => darkThemeMatch.removeEventListener("change", matchListener);
+  }, []);
+
+  return currentTheme;
+};
+```
+
+In this hook, we first check the value of the default theme and store it in a state variable. Then, in the useEffect hook, we are listening for change events on the `prefers-color-scheme` media query. We're doing this to listen and react to any changes in the user's system theme. Whenever the system theme changes, we set the current theme equal to the user's new theme. Lastly, in the cleanup of the useEffect hook, we remove the change event listener on the media query.
