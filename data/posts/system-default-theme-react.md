@@ -1,5 +1,5 @@
 ---
-title: Determining the system default theme in react.
+title: Determining the system default theme in react
 date: 8 December 2021
 description: This post is a guide for determining the system default theme in react.
 ---

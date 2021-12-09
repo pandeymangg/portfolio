@@ -3,7 +3,6 @@ import HeaderLinks from "./HeaderLinks";
 import { useTheme } from "next-themes";
 import ThemeToggler from "../ThemeToggler";
 import { BiMenu } from "react-icons/bi";
-import classes from "./styles.module.css";
 import Link from "next/link";
 
 const headerLinksArray = [
@@ -37,6 +36,7 @@ const Header = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
   return (
     <nav className="max-w-4xl px-8 py-4 md:py-0 md:h-20 flex items-center mx-auto my-0 z-50 header-backdrop sticky-nav">
       <div className="nav-container w-full flex justify-between items-center">
