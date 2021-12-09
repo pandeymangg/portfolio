@@ -45,7 +45,7 @@ const Header = () => {
             background-color: ${theme === "light"
               ? "rgba(255, 255, 255, 0.95)"
               : "rgba(0, 0, 0, 0.95)"};
-            transition: background-color ease-in 0.5s;
+            transition: background-color ease-in 0.2s;
           }
 
           @supports (
