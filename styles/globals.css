@@ -18,5 +18,5 @@ html {
 }
 
 .layout {
-  transition: background-color ease-in 0.5s;
+  transition: background-color ease-in 0.2s;
 }
