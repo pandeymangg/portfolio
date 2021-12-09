@@ -39,6 +39,26 @@ const Header = () => {
 
   return (
     <nav className="max-w-4xl px-8 py-4 md:py-0 md:h-20 flex items-center mx-auto my-0 z-50 header-backdrop sticky-nav">
+      {mounted ? (
+        <style jsx>{`
+          .header-backdrop {
+            background-color: ${theme === "light"
+              ? "rgba(255, 255, 255, 0.95)"
+              : "rgba(0, 0, 0, 0.95)"};
+            transition: background-color ease-in 0.5s;
+          }
+
+          @supports (
+            (-webkit-backdrop-filter: none) or (backdrop-filter: none)
+          ) {
+            .header-backdrop {
+              background-color: transparent;
+              -webkit-backdrop-filter: saturate(180%) blur(20px);
+              backdrop-filter: saturate(180%) blur(20px);
+            }
+          }
+        `}</style>
+      ) : null}
       <div className="nav-container w-full flex justify-between items-center">
         <div className="nav-heading hidden md:block cursor-pointer">
           <Link href="/">
