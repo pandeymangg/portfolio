@@ -50,12 +50,25 @@ const Home = () => {
               </p>
             </div>
             <div className="flex gap-4">
-              <div className="social-icon rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center text-gray-900 dark:text-gray-100">
-                <AiFillGithub size={"2rem"} />
-              </div>
-              <div className="social-icon rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center text-gray-900 dark:text-gray-100">
-                <AiFillLinkedin size={"2rem"} />
-              </div>
+              <a
+                href="https://github.com/anshuman9999"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="social-icon rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center text-gray-900 dark:text-gray-100">
+                  <AiFillGithub size={"2rem"} />
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/anshuman9999/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="social-icon rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center text-gray-900 dark:text-gray-100">
+                  <AiFillLinkedin size={"2rem"} />
+                </div>
+              </a>
 
               <style jsx>{`
                 .social-icon:hover {
