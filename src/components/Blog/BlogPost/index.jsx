@@ -6,7 +6,7 @@ const BlogPost = ({ data, source }) => {
   return (
     <section className="blog-post pt-20 h-screen w-full mx-auto  px-8 pb-8">
       <div className="max-w-2xl flex flex-col mx-auto items-start">
-        <div className="mb-8 flex flex-col">
+        <div className="mb-8 w-full flex flex-col">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-black dark:text-white mb-4">
             {data.title}
           </h1>
