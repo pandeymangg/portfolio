@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Skills = () => {
@@ -8,9 +9,13 @@ const Skills = () => {
     >
       <div className="max-w-2xl flex flex-col mx-auto items-start">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white">
-            Skills
-          </h1>
+          <Link href="/#skills">
+            <a>
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white">
+                Skills
+              </h1>
+            </a>
+          </Link>
         </div>
         <div className="flex flex-col gap-2">
           <div>
@@ -18,7 +23,7 @@ const Skills = () => {
               Programming Languages:
             </span>
             <span className="text-sm md:text-base text-gray-600 dark:text-gray-100">
-              JavaScript, Python, C++, Java, C
+              JavaScript / TypeScript, Python, C++, Java, C
             </span>
           </div>
           <div>
@@ -27,7 +32,7 @@ const Skills = () => {
             </span>
             <span className="text-sm md:text-base text-gray-600 dark:text-gray-100">
               HTML, CSS, SASS, JavaScript, Node.js, Express.js, React.js,
-              Next.js, Electon.js, REST, Django, Flask
+              Next.js, Electon.js, REST, Django, Flask, GraphQL
             </span>
           </div>
           <div>
@@ -35,7 +40,7 @@ const Skills = () => {
               Databases and other tools:
             </span>
             <span className="text-sm md:text-base text-gray-600 dark:text-gray-100">
-              MongoDb, MYSQL, PostgreSQL, Git, Github
+              MongoDb, MYSQL, PostgreSQL, Git, Github, Shopify app development
             </span>
           </div>
         </div>
