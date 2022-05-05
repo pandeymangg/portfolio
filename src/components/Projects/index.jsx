@@ -1,5 +1,4 @@
 import React from "react";
-import { FiExternalLink } from "react-icons/fi";
 import Button from "./Button";
 
 const Projects = () => {
