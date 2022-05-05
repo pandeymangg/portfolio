@@ -21,8 +21,8 @@ const Experience = () => {
         </div>
 
         <div className="flex flex-col gap-8">
-          <Quinn />
           <Trell />
+          <Quinn />
         </div>
       </div>
     </section>
