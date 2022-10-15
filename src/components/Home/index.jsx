@@ -44,7 +44,7 @@ const Home = () => {
           </p>
 
           <div className='home-intro-links'>
-            <div className='mb-4'>
+            <div className='mb-4 '>
               <p className='font-semibold text-gray-600 dark:text-gray-100 text-base md:text-lg'>
                 Connect with me:{' '}
               </p>
