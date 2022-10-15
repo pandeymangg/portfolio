@@ -51,7 +51,11 @@ const Header = () => {
         </div>
 
         <div className='hidden md:flex gap-8 items-center'>
-          <ThemeToggler mounted={mounted} theme={theme} setTheme={setTheme} />
+          <ThemeToggler
+            mounted={mounted}
+            theme={theme ?? 'dark'}
+            setTheme={setTheme}
+          />
           {headerLinksArray.map((headerLink) => (
             <HeaderLinks text={headerLink.text} link={headerLink.link} />
           ))}
@@ -69,7 +73,7 @@ const Header = () => {
             <div className='flex items-center gap-2'>
               <ThemeToggler
                 mounted={mounted}
-                theme={theme}
+                theme={theme ?? 'dark'}
                 setTheme={setTheme}
               />
               <div
