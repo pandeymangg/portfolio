@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <Layout
       docTitle='Anshuman Pandey'
-      metaDescription='Anshuman Pandey, full stack web developer'
+      metaDescription='Anshuman Pandey, full stack web developer '
     >
       <>
         <Header />
