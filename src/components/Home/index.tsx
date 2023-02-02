@@ -51,7 +51,7 @@ const Home = () => {
             </div>
             <div className='flex gap-4'>
               <a
-                href='https://github.com/anshuman9999'
+                href='https://github.com/pandeymangg'
                 target='_blank'
                 rel='noreferrer'
               >
@@ -61,7 +61,7 @@ const Home = () => {
               </a>
 
               <a
-                href='https://www.linkedin.com/in/anshuman9999/'
+                href='https://www.linkedin.com/in/pandeyman/'
                 target='_blank'
                 rel='noreferrer'
               >
