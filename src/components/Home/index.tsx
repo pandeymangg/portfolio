@@ -12,7 +12,7 @@ const Home = () => {
               src='/assets/images/photo.jpg'
               width={192}
               height={192}
-              alt='Picture of Anshuman Pandey'
+              alt='Anshuman Pandey'
             />
           </div>
         </div>
