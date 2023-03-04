@@ -47,7 +47,6 @@ const Tealfeed = () => {
               Made the frontend code of the whole app{' '}
               <span className='font-semibold'>typse-safe with TypeScript</span>.
             </p>
-            <p></p>
           </li>
         </ul>
       </div>

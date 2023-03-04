@@ -4,6 +4,7 @@ import { useTheme } from 'next-themes';
 import ThemeToggler from '../ThemeToggler';
 import { BiMenu } from 'react-icons/bi';
 import Link from 'next/link';
+import { Conditional } from '@pandeymangg/react-conditional';
 
 const headerLinksArray = [
   {
@@ -85,10 +86,10 @@ const Header = () => {
             </div>
           </div>
 
-          {phoneMenu && (
+          <Conditional condition={phoneMenu}>
             <div className='pb-4'>
               {headerLinksArray.map((headerLink) => (
-                <div className={`pt-1`}>
+                <div className='pt-1'>
                   <HeaderLinks
                     text={headerLink.text}
                     link={headerLink.link}
@@ -98,7 +99,7 @@ const Header = () => {
                 </div>
               ))}
             </div>
-          )}
+          </Conditional>
         </div>
       </div>
     </nav>
