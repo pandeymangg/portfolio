@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -16,14 +16,38 @@ const HeaderLinks = ({
   setPhoneMenu,
 }: IHeaderLinksProps) => {
   const router = useRouter();
-  const isActive = router.asPath === link;
+  // const isActive = router.asPath === link;
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+
+      sections.forEach((section) => {
+        const sectionId = section.getAttribute('id');
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionBottom = sectionTop + sectionHeight;
+
+        if (
+          window.pageYOffset >= sectionTop - 60 &&
+          window.pageYOffset <= sectionBottom - 60
+        ) {
+          document
+            .querySelector(`a[href*=${sectionId}]`)
+            ?.classList?.add('active');
+        } else {
+          document
+            .querySelector(`a[href*=${sectionId}]`)
+            ?.classList?.remove('active');
+        }
+      });
+    });
+  }, []);
 
   return (
     <Link href={link}>
       <a
-        className={`text-base text-textSecondary dark:text-darkTextSecondary transition-all ${
-          isActive ? 'font-bold border-0 md:border-b-4 border-primary' : ''
-        }`}
+        className={`text-base text-textSecondary dark:text-darkTextSecondary transition-all `}
       >
         <span
           onClick={() => {

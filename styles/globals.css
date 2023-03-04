@@ -32,6 +32,11 @@ html {
   transition: background-color ease-in 0.2s;
 }
 
+a.active {
+  border-bottom: 4px solid #25d1b5;
+  font-weight: 700;
+}
+
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header-backdrop {
     background-color: transparent;
