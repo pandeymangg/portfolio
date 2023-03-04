@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import Image from 'next/image';
+import { Conditional } from '@pandeymangg/react-conditional';
 
 const Home = () => {
   return (
