@@ -17,29 +17,40 @@ const Blog = ({ postsData }: IBlogProps) => {
     <section className='blog h-screen pt-20 flex flex-col px-8'>
       <div className='max-w-2xl flex flex-col mx-auto gap-8'>
         <div>
-          <h1 className='text-5xl font-bold tracking-tight text-black dark:text-white text-center'>
+          <h1 className='text-5xl font-bold tracking-tight text-center'>
             Blog
           </h1>
         </div>
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 text-textSecondary dark:text-darkTextSecondary'>
           <div className='flex gap-2 items-center md:justify-center'>
             <span className='text-[#097969]'>
               <BsCheckCircle />
             </span>
-            <p className='text-gray-900 dark:text-gray-100'>
-              Built with <span className='font-semibold'>next.js</span>,{' '}
-              <span className='font-semibold'>tailwindcss</span>,{' '}
-              <span className='font-semibold'>markdown</span>
+            <p>
+              Built with{' '}
+              <span className='font-semibold text-textPrimary dark:text-darkTextSecondary'>
+                next.js
+              </span>
+              ,{' '}
+              <span className='font-semibold text-textPrimary dark:text-darkTextSecondary'>
+                tailwindcss
+              </span>
+              ,{' '}
+              <span className='font-semibold text-textPrimary dark:text-darkTextSecondary'>
+                markdown
+              </span>
             </p>
           </div>
           <div className='flex gap-2 items-center md:justify-center'>
             <span className='text-[#097969]'>
               <BsCheckCircle />
             </span>
-            <p className='text-gray-900 dark:text-gray-100'>
+            <p>
               Static site generated with next.js{' '}
-              <span className='font-semibold'>static site generation</span>{' '}
+              <span className='font-semibold text-textPrimary dark:text-darkTextSecondary'>
+                static site generation
+              </span>{' '}
               (SSG)
             </p>
           </div>
@@ -47,7 +58,7 @@ const Blog = ({ postsData }: IBlogProps) => {
             <span className='text-[#097969]'>
               <BsCheckCircle />
             </span>
-            <p className='text-gray-900 dark:text-gray-100'>Blazing fast</p>
+            <p>Blazing fast</p>
           </div>
         </div>
 

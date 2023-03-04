@@ -26,7 +26,7 @@ const BlogCard = ({ post }: IBlogCardProps) => {
           }
         `}</style>
         <div className='flex flex-col gap-2 md:flex-row md:justify-between md:items-center w-full mb-2'>
-          <h4 className='text-base md:text-xl text-gray-900 dark:text-gray-100 font-medium'>
+          <h4 className='text-base md:text-xl font-medium'>
             {post.data.title}
           </h4>
           <div className='w-auto self-start md:self-center'>
@@ -34,7 +34,7 @@ const BlogCard = ({ post }: IBlogCardProps) => {
           </div>
         </div>
         <div>
-          <p className='text-gray-600 dark:text-gray-200'>
+          <p className='text-textSecondary dark:text-darkTextSecondary'>
             {post.data.description}
           </p>
         </div>

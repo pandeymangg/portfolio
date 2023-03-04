@@ -13,10 +13,10 @@ module.exports = {
         darkBgPrimary: '#181825',
         darkBgSecondary: '#313244',
 
-        primary: '#94e2d5',
+        primary: '#25d1b5',
 
-        textPrimary: '#4c4f69',
-        textSecondary: '#6c6f85',
+        textPrimary: '#1b123d',
+        textSecondary: '#353750',
 
         darkTextPrimary: '#cdd6f4',
         darkTextSecondary: '#bac2de',
@@ -25,7 +25,7 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: '100%',
-            color: theme('colors.gray.700'),
+            color: theme('colors.textPrimary'),
             a: {
               color: theme('colors.blue.500'),
               '&:hover': {
@@ -43,7 +43,7 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.300'),
+            color: theme('colors.darkTextSecondary'),
             a: {
               color: theme('colors.blue.400'),
               '&:hover': {
@@ -56,7 +56,7 @@ module.exports = {
               color: theme('colors.gray.300'),
             },
             'h1,h2,h3,h4': {
-              color: theme('colors.gray.100'),
+              color: theme('colors.darkTextPrimary'),
               // "scroll-margin-top": spacing[32],
             },
             hr: { borderColor: theme('colors.gray.700') },

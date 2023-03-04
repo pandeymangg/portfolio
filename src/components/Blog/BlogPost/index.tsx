@@ -14,7 +14,7 @@ const BlogPost = ({ data, source }: IBlogPostProps) => {
     <section className='blog-post pt-20 h-full w-full mx-auto  px-8 pb-8'>
       <div className='max-w-2xl flex flex-col mx-auto items-start'>
         <div className='mb-8 w-full flex flex-col'>
-          <h1 className='text-3xl md:text-4xl font-bold tracking-tight text-black dark:text-white mb-4'>
+          <h1 className='text-3xl md:text-4xl font-bold tracking-tight mb-4'>
             {data.title}
           </h1>
           <div className='flex justify-between items-center'>
@@ -24,9 +24,7 @@ const BlogPost = ({ data, source }: IBlogPostProps) => {
               </div>
 
               <div>
-                <span className='text-gray-700 dark:text-gray-200 text-sm'>
-                  Anshuman Pandey
-                </span>
+                <span className='font-semibold text-sm'>Anshuman Pandey</span>
               </div>
             </div>
 
