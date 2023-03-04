@@ -10,16 +10,16 @@ module.exports = {
       colors: {
         bgPrimary: '#eff1f5',
         bgSecondary: '#ccd0da',
-        darkBgPrimary: '#1e1e2e',
+        darkBgPrimary: '#181825',
         darkBgSecondary: '#313244',
 
         primary: '#94e2d5',
 
         textPrimary: '#4c4f69',
-        textSecondary: '#5c5f77',
+        textSecondary: '#6c6f85',
 
         darkTextPrimary: '#cdd6f4',
-        darkTextSecondary: '#bac2de',
+        darkTextSecondary: '#a6adc8',
       },
       typography: (theme) => ({
         DEFAULT: {

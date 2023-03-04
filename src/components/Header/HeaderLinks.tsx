@@ -16,7 +16,7 @@ const HeaderLinks = ({
 }: IHeaderLinksProps) => {
   return (
     <Link href={link}>
-      <a className='text-base text-gray-600 dark:text-gray-100'>
+      <a className='text-base text-textSecondary dark:text-darkTextSecondary'>
         <span
           onClick={() => {
             if (phoneMenu) setPhoneMenu?.(!phoneMenu);

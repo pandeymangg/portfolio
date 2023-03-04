@@ -12,13 +12,11 @@ export default function HomePage() {
       docTitle='Anshuman Pandey'
       metaDescription='Anshuman Pandey, full stack web developer '
     >
-      <>
-        <Header />
-        <Home />
-        <Experience />
-        <Skills />
-        <Projects />
-      </>
+      <Header />
+      <Home />
+      <Experience />
+      <Skills />
+      <Projects />
     </Layout>
   );
 }

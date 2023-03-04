@@ -17,35 +17,42 @@ const Home = () => {
           </div>
         </div>
         <div className='mb-6'>
-          <h1 className='text-3xl text-center md:text-left md:text-5xl font-bold tracking-tight text-black dark:text-white'>
+          <h1 className='text-3xl text-center md:text-left md:text-5xl font-bold tracking-tight'>
             Hey, I'm Anshuman Pandey
           </h1>
         </div>
 
         <div className='home-intro'>
-          <p className='text-gray-600 dark:text-gray-100 text-sm md:text-base mb-4'>
+          <p className='text-textSecondary dark:text-darkTextSecondary text-sm md:text-base mb-4'>
             I'm a{' '}
-            <span className='font-semibold'>full stack web developer</span>, I
-            love working with web technologies and building web apps. I'm
+            <span className='font-semibold text-textPrimary dark:text-darkTextPrimary'>
+              full stack web developer
+            </span>
+            , I love working with web technologies and building web apps. I'm
             passionate about learning new skills that help me become a better
             developer.
           </p>
 
-          <p className='text-gray-600 dark:text-gray-100 text-sm md:text-base mb-8'>
+          <p className='text-textSecondary dark:text-darkTextSecondary text-sm md:text-base mb-8'>
             I have worked with{' '}
-            <span className='font-semibold'>HTML, CSS and JavaScript </span> and
-            have experience with various JavaScript frameworks like{' '}
-            <span className='font-semibold'>
+            <span className='font-semibold text-textPrimary dark:text-darkTextPrimary'>
+              HTML, CSS and JavaScript{' '}
+            </span>{' '}
+            and have experience with various JavaScript frameworks like{' '}
+            <span className='font-semibold text-textPrimary dark:text-darkTextPrimary'>
               React.js, Next.js Node.js and Electron.js
             </span>
             . I have experience in building{' '}
-            <span className='font-semibold'>REST APIs with Express</span>. I use
-            these tools to build user-friendly web apps that function well.
+            <span className='font-semibold text-textPrimary dark:text-darkTextPrimary'>
+              REST APIs with Express
+            </span>
+            . I use these tools to build user-friendly web apps that function
+            well.
           </p>
 
           <div className='home-intro-links'>
             <div className='mb-4 '>
-              <p className='font-semibold text-gray-600 dark:text-gray-100 text-base md:text-lg'>
+              <p className='font-semibold text-textPrimary dark:text-darkTextPrimary text-base md:text-lg'>
                 Connect with me:{' '}
               </p>
             </div>

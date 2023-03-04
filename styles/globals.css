@@ -35,7 +35,7 @@ html {
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header-backdrop {
     background-color: transparent;
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
   }
 }

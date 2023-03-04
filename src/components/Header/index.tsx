@@ -5,29 +5,7 @@ import ThemeToggler from '../ThemeToggler';
 import { BiMenu } from 'react-icons/bi';
 import Link from 'next/link';
 import { Conditional } from '@pandeymangg/react-conditional';
-
-const headerLinksArray = [
-  {
-    text: 'Home',
-    link: '/#home',
-  },
-  {
-    text: 'Experience',
-    link: '/#experience',
-  },
-  {
-    text: 'Skills',
-    link: '/#skills',
-  },
-  {
-    text: 'Projects',
-    link: '/#projects',
-  },
-  {
-    text: 'Blog',
-    link: '/blog',
-  },
-];
+import { headerLinksArray } from '../../constants/headerLinks';
 
 const Header = () => {
   const [mounted, setMounted] = useState(false);
@@ -44,9 +22,7 @@ const Header = () => {
         <div className='nav-heading hidden md:block cursor-pointer'>
           <Link href='/'>
             <a>
-              <h1 className='text-xl md:text-3xl font-bold text-gray-900 dark:text-gray-200'>
-                Anshuman Pandey
-              </h1>
+              <h1 className='text-xl md:text-3xl font-bold'>Anshuman Pandey</h1>
             </a>
           </Link>
         </div>
@@ -66,7 +42,7 @@ const Header = () => {
           <div className='flex items-center justify-between'>
             <Link href='/'>
               <a>
-                <h1 className='text-xl md:text-3xl font-bold text-gray-900 dark:text-gray-200'>
+                <h1 className='text-xl md:text-3xl font-bold'>
                   Anshuman Pandey
                 </h1>
               </a>
@@ -77,10 +53,7 @@ const Header = () => {
                 theme={theme ?? 'dark'}
                 setTheme={setTheme}
               />
-              <div
-                className='text-gray-900 dark:text-gray-200 mt-0.5'
-                onClick={() => setPhoneMenu(!phoneMenu)}
-              >
+              <div className='mt-0.5' onClick={() => setPhoneMenu(!phoneMenu)}>
                 <BiMenu size={'1.2rem'} />
               </div>
             </div>

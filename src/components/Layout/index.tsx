@@ -17,7 +17,7 @@ const Layout = (props: ILayoutProps) => {
         <meta name='description' content={metaDescription}></meta>
       </Head>
 
-      {children}
+      <>{children}</>
     </div>
   );
 };
