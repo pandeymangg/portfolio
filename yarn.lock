@@ -348,10 +348,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pandeymangg/react-conditional@^0.0.2":
-  version "0.0.2"
-  resolved "https://npm.pkg.github.com/download/@pandeymangg/react-conditional/0.0.2/9a8a81a61b669ad0589322d4776c280524b3dca3#9a8a81a61b669ad0589322d4776c280524b3dca3"
-  integrity sha512-03mC7X/eIhNXIoaIF+OMyu7qB6UvV3AvKzEKQYn+Xjn7/3OH1NfqgpyyVYSGP4jvJ05yQHvGvZfr8kQQnXa2xA==
+"@pandeymangg/react-conditional@^0.0.3":
+  version "0.0.3"
+  resolved "https://npm.pkg.github.com/download/@pandeymangg/react-conditional/0.0.3/f658574566609b1eddb30d443be79e6260538a36#f658574566609b1eddb30d443be79e6260538a36"
+  integrity sha512-NhwVfqdHBd5eXjXai3UUD1nBIQ/V53qJbH6h6847ZlRSspq9zxgYtDGlXWuFMZXKMiVXoS+V5TQ/novC9PNgVg==
 
 "@swc/helpers@0.4.11":
   version "0.4.11"
