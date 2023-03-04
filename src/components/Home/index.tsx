@@ -51,7 +51,7 @@ const Home = () => {
           </p>
 
           <div className='home-intro-links'>
-            <div className='mb-4 '>
+            <div className='mb-4'>
               <p className='font-semibold text-textPrimary dark:text-darkTextPrimary text-base md:text-lg'>
                 Connect with me:{' '}
               </p>
@@ -62,7 +62,7 @@ const Home = () => {
                 target='_blank'
                 rel='noreferrer'
               >
-                <div className='social-icon rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center hover:border-4 hover:border-[#7fffd4] text-gray-900 dark:text-gray-100'>
+                <div className='social-icon border-[#9ca0b0] dark-border-[#6c7086] rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 cursor-pointer flex justify-center items-center hover:border-4'>
                   <AiFillGithub size={'2rem'} />
                 </div>
               </a>
@@ -72,7 +72,7 @@ const Home = () => {
                 target='_blank'
                 rel='noreferrer'
               >
-                <div className='rounded-lg w-16 h-12 md:w-20 md:h-14 border-4 border-black dark:border-gray-100 cursor-pointer flex justify-center items-center hover:border-4 hover:border-[#7fffd4] text-gray-900 dark:text-gray-100'>
+                <div className='rounded-lg border-[#9ca0b0] dark-border-[#6c7086] w-16 h-12 md:w-20 md:h-14 border-4 cursor-pointer flex justify-center items-center hover:border-4'>
                   <AiFillLinkedin size={'2rem'} />
                 </div>
               </a>

@@ -19,7 +19,7 @@ module.exports = {
         textSecondary: '#6c6f85',
 
         darkTextPrimary: '#cdd6f4',
-        darkTextSecondary: '#a6adc8',
+        darkTextSecondary: '#bac2de',
       },
       typography: (theme) => ({
         DEFAULT: {

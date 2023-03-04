@@ -14,7 +14,7 @@ const Experience = () => {
         <div className='mb-8'>
           <Link href='/#experience'>
             <a>
-              <h1 className='text-3xl md:text-5xl font-bold tracking-tight text-black dark:text-white'>
+              <h1 className='text-3xl md:text-5xl font-bold tracking-tight'>
                 Experience
               </h1>
             </a>
