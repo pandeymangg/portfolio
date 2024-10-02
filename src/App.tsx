@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Home } from "./components/Home";
 import { Nav } from "./components/Nav";
 import Dwindle from "./components/Dwindle";
 import { addComponent, getConfig, removeComponent } from "./lib/dwindle";
-import { Projects } from "./components/Projects";
-import { Work } from "./components/Work";
 import { INITIAL_CONFIG } from "./lib/constants";
 import { Root } from "./types";
 import { Ascii } from "./components/Ascii";
 import { LayoutPanelLeftIcon } from "lucide-react";
+import { getComponentById } from "./lib/utils";
 
 function App() {
   const [componentStack, setComponentStack] = useState<Array<string>>([]);
@@ -26,20 +24,6 @@ function App() {
       setParentWidth(clientWidth);
     }
   }, [parentRef]);
-
-  const getComponent = (itemId: string) => {
-    if (itemId === "aboutMe") {
-      return <Home />;
-    }
-
-    if (itemId === "work") {
-      return <Work />;
-    }
-
-    if (itemId === "projects") {
-      return <Projects />;
-    }
-  };
 
   return (
     <main className="h-screen w-screen bg-gradient-to-b from-bgPrimary to-[#21202e] relative">
@@ -67,7 +51,7 @@ function App() {
             if (componentStack.includes(item.id)) {
               return;
             }
-            const component = getComponent(item.id);
+            const component = getComponentById(item.id);
             if (component) {
               setConfig(
                 addComponent(config, { type: "child", id: item.id, component })
@@ -77,29 +61,6 @@ function App() {
             }
           }}
           componentStack={componentStack}
-          onReArrange={() => {
-            // replace work with projects
-
-            const reArrangedComponentStack = componentStack.map((item) => {
-              if (item === "work") {
-                return "projects";
-              }
-
-              if (item === "projects") {
-                return "work";
-              }
-
-              return item;
-            });
-
-            const newConfig = getConfig(
-              reArrangedComponentStack.map((item) => getComponent(item))
-            );
-            if (newConfig) {
-              setConfig(newConfig);
-              setComponentStack(reArrangedComponentStack);
-            }
-          }}
         />
 
         {config && (
@@ -122,6 +83,36 @@ function App() {
                   setComponentStack((prev) =>
                     prev.filter((id) => id !== leafId)
                   );
+                }
+              }}
+              componentStack={componentStack}
+              onReArrange={(from: string, to: string) => {
+                if (
+                  componentStack.includes(from) &&
+                  componentStack.includes(to)
+                ) {
+                  const newComponentStack = componentStack.map((item) => {
+                    if (item === from) {
+                      return to;
+                    }
+                    if (item === to) {
+                      return from;
+                    }
+                    return item;
+                  });
+
+                  setComponentStack(newComponentStack);
+                  setConfig(
+                    getConfig(
+                      newComponentStack.map((item) => ({
+                        component: getComponentById(item),
+                        id: item,
+                      }))
+                    )
+                  );
+                } else {
+                  console.error("Invalid re-arrangement");
+                  return;
                 }
               }}
               gap={10}

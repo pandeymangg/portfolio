@@ -20,14 +20,9 @@ const navItems: Array<TabItem> = [
 interface NavProps {
   onItemChange: (item: TabItem) => void;
   componentStack: Array<string>;
-  onReArrange?: () => void;
 }
 
-export const Nav = ({
-  componentStack,
-  onItemChange,
-}: // onReArrange,
-NavProps) => {
+export const Nav = ({ componentStack, onItemChange }: NavProps) => {
   // get the date like Wed, 02 Oct 2024
   const date = new Date().toDateString().split(" ").join(", ");
 
@@ -60,12 +55,12 @@ NavProps) => {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
             <CalendarIcon className="text-iris w-4 h-4" />
-            <span className="text-sm text-textRose font-medium">{date}</span>
+            <span className="text-sm text-textPrimary font-medium">{date}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <ClockIcon className="text-iris w-4 h-4" />
-            <span className="text-sm text-textRose font-medium">
+            <span className="text-sm text-textPrimary font-medium">
               {currentTime}
             </span>
           </div>
@@ -114,11 +109,11 @@ NavProps) => {
               key={item.id}
             >
               {item.id === "work" && (
-                <BriefcaseBusinessIcon className="text-textPrimary w-4 h-4" />
+                <BriefcaseBusinessIcon className="text-iris w-4 h-4" />
               )}
 
               {item.id === "projects" && (
-                <FlaskConicalIcon className="text-textPrimary w-4 h-4" />
+                <FlaskConicalIcon className="text-iris w-4 h-4" />
               )}
 
               <span

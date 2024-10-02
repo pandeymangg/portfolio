@@ -1,15 +1,17 @@
 import { createId } from "@paralleldrive/cuid2";
 import { Child, Root } from "../types";
 
-export const getConfig = (components: React.ReactNode[]): Root => {
+export const getConfig = (
+  components: { component: React.ReactNode; id: string }[]
+): Root => {
   if (components.length === 1 || components.length === 2) {
     return {
       type: "root",
       id: createId(),
       leaves: components.map((component) => ({
         type: "child",
-        id: createId(),
-        component,
+        id: component.id,
+        component: component.component,
       })),
     };
   }
@@ -18,23 +20,17 @@ export const getConfig = (components: React.ReactNode[]): Root => {
     type: "root",
     id: createId(),
     leaves: [
-      { type: "child", id: createId(), component: components[0] },
+      {
+        type: "child",
+        id: components[0].id,
+        component: components[0].component,
+      },
       getConfig(components.slice(1)),
     ],
   };
 };
 
-export function addComponent(
-  config: Root,
-  // newComponent: React.ReactNode
-  newComponent: Child
-): Root {
-  // const newChild = {
-  //   type: "child",
-  //   id: createId(),
-  //   component: newComponent,
-  // } as Child;
-
+export function addComponent(config: Root, newComponent: Child): Root {
   if (config.leaves.length === 0) {
     return {
       type: "root",

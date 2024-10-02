@@ -1,8 +1,107 @@
 import React, { useState } from "react";
-import { Root } from "../types";
+import { Child, Root } from "../types";
 import { cn } from "../lib/cn";
-import { XIcon } from "lucide-react";
+import { EllipsisVerticalIcon, XIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getComponentLabelById } from "../lib/utils";
+
+interface LeafProps {
+  leaf: Child;
+  activeElementId: string;
+  setActiveElementId: React.Dispatch<React.SetStateAction<string>>;
+  width: number;
+  height: number;
+  onDelete: (id: string) => void;
+  onReArrange?: (source: string, destination: string) => void;
+  componentStack?: Array<string>;
+}
+
+const Leaf = ({
+  activeElementId,
+  height,
+  leaf,
+  onDelete,
+  setActiveElementId,
+  width,
+  componentStack,
+  onReArrange,
+}: LeafProps) => {
+  const [contextMenuOpened, setContextMenuOpened] = useState(false);
+
+  return (
+    <motion.div
+      key={leaf.id}
+      className={cn(
+        "border-2 border-borderPrimary rounded-xl overflow-hidden transition-colors duration-300",
+        activeElementId === leaf.id && "border-textRose"
+      )}
+      style={{
+        position: "relative",
+        width: `${width}px`,
+        height: `${height}px`,
+      }}
+      onMouseEnter={() => setActiveElementId(leaf.id)}
+      onMouseLeave={() => setActiveElementId("")}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div
+        className="h-6 px-4 py-2 flex items-center gap-2 bg-bgTertiary"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        <motion.button
+          onClick={() => {
+            onDelete(leaf.id);
+          }}
+          className="h-3 w-3 bg-red-500 rounded-full cursor-pointer flex items-center justify-center text-red-500 hover:text-white transition-colors duration-200"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <XIcon className="h-2 w-2" />
+        </motion.button>
+
+        <div className="relative">
+          <button
+            onClick={() => {
+              setContextMenuOpened((prev) => !prev);
+            }}
+          >
+            <EllipsisVerticalIcon className="h-3 w-3 text-textPrimary" />
+          </button>
+
+          {contextMenuOpened && (
+            <div
+              className={cn(
+                "absolute top-4 left-0 bottom-10 min-w-max min-h-max bg-bgTertiary"
+              )}
+            >
+              {componentStack
+                ?.filter((id) => id !== leaf.id)
+                ?.map((item) => {
+                  return (
+                    <button
+                      onClick={() => {
+                        if (onReArrange) onReArrange(leaf.id, item);
+                      }}
+                      className="block py-2 px-3 bg-bgTertiary hover:bg-bgSecondary cursor-pointer"
+                    >
+                      <span className="text-sm text-textPrimary">
+                        {getComponentLabelById(item)}
+                      </span>
+                    </button>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+      </motion.div>
+      {leaf.component}
+    </motion.div>
+  );
+};
 
 interface DwindleProps {
   config: Root;
@@ -10,6 +109,8 @@ interface DwindleProps {
   height: number;
   onDelete: (id: string) => void;
   gap?: number;
+  componentStack?: Array<string>;
+  onReArrange?: (source: string, destination: string) => void;
 }
 
 const Dwindle: React.FC<DwindleProps> = ({
@@ -18,6 +119,8 @@ const Dwindle: React.FC<DwindleProps> = ({
   height,
   onDelete,
   gap = 4,
+  componentStack,
+  onReArrange,
 }) => {
   const [activeElementId, setActiveElementId] = useState("");
   const ratio = width / height;
@@ -39,53 +142,17 @@ const Dwindle: React.FC<DwindleProps> = ({
         {config.leaves.map((leaf) => {
           if (leaf.type === "child") {
             return (
-              <motion.div
+              <Leaf
                 key={leaf.id}
-                className={cn(
-                  "border-2 border-borderPrimary rounded-xl overflow-hidden transition-colors duration-300",
-                  activeElementId === leaf.id && "border-textRose"
-                )}
-                style={{
-                  position: "relative",
-                  width: `${width}px`,
-                  height: `${height}px`,
-                }}
-                onMouseEnter={() => setActiveElementId(leaf.id)}
-                onMouseLeave={() => setActiveElementId("")}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="h-6 px-4 py-2 flex items-center gap-2 bg-bgTertiary"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <motion.button
-                    onClick={() => {
-                      onDelete(leaf.id);
-                    }}
-                    className="h-3 w-3 bg-red-500 rounded-full cursor-pointer flex items-center justify-center text-red-500 hover:text-white transition-colors duration-200"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <XIcon className="h-2 w-2" />
-                  </motion.button>
-
-                  {/* <motion.button
-                    onClick={() => {
-                      onDelete(leaf.id);
-                    }}
-                    className="h-3 w-3 bg-green-500 rounded-full cursor-pointer flex items-center justify-center text-green-500 hover:text-white transition-colors duration-200"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <XIcon className="h-2 w-2" />
-                  </motion.button> */}
-                </motion.div>
-                {leaf.component}
-              </motion.div>
+                activeElementId={activeElementId}
+                setActiveElementId={setActiveElementId}
+                height={ratio > 1 ? height : height / 2}
+                leaf={leaf}
+                width={ratio > 1 ? width / 2 : width}
+                onDelete={onDelete}
+                componentStack={componentStack}
+                onReArrange={onReArrange}
+              />
             );
           } else {
             return (
@@ -102,6 +169,8 @@ const Dwindle: React.FC<DwindleProps> = ({
                 height={ratio > 1 ? height : height / 2}
                 onDelete={onDelete}
                 gap={gap}
+                componentStack={componentStack}
+                onReArrange={onReArrange}
               />
             );
           }
