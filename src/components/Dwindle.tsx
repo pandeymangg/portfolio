@@ -57,7 +57,7 @@ const Dwindle: React.FC<DwindleProps> = ({
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
-                  className="h-6 px-4 py-2 flex items-center"
+                  className="h-6 px-4 py-2 flex items-center gap-2 bg-bgTertiary"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.1 }}
@@ -72,6 +72,17 @@ const Dwindle: React.FC<DwindleProps> = ({
                   >
                     <XIcon className="h-2 w-2" />
                   </motion.button>
+
+                  {/* <motion.button
+                    onClick={() => {
+                      onDelete(leaf.id);
+                    }}
+                    className="h-3 w-3 bg-green-500 rounded-full cursor-pointer flex items-center justify-center text-green-500 hover:text-white transition-colors duration-200"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <XIcon className="h-2 w-2" />
+                  </motion.button> */}
                 </motion.div>
                 {leaf.component}
               </motion.div>

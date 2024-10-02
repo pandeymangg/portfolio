@@ -1,60 +1,110 @@
 export const Work = () => {
   return (
-    <div className="px-4 overflow-auto max-h-full h-full">
-      <p className="text-textPrimary text-2xl font-bold">
-        Welcome to the Work page!
-      </p>
+    <div className="px-4 pt-4 h-full max-h-full overflow-auto">
+      <div className="flex items-center">
+        <h2 className="text-textPrimary text-2xl font-bold">
+          Work Experience 🚀
+        </h2>
+      </div>
 
-      <div className="mt-4">
-        <p className="text-textPrimary text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          esse, atque doloribus soluta beatae ipsum cum possimus sint illum hic.
-          Accusantium, repellat commodi labore esse dolores quaerat praesentium
-          dignissimos asperiores ad optio, sapiente tempora et perferendis
-          quidem pariatur illum tempore quas eum nesciunt! Molestias odit
-          expedita, maiores nostrum perferendis excepturi possimus beatae
-          suscipit nesciunt deleniti eius aperiam itaque dolores delectus
-          laboriosam similique a voluptate quisquam inventore assumenda? Sint
-          natus voluptatibus officiis ipsum! Pariatur nobis obcaecati reiciendis
-          error quae praesentium dolorem aliquid! Accusamus veritatis
-          dignissimos perspiciatis nam obcaecati dolorum, officiis ab ipsam
-          vero? Ipsum ipsam iusto minima suscipit ex deleniti asperiores odio,
-          consequatur corporis porro sint doloremque velit facilis nostrum
-          impedit aut nam ullam earum eius. Distinctio assumenda et temporibus
-          voluptatibus odit in aperiam molestias corporis, pariatur repellendus
-          similique eius unde earum ex tempora nobis inventore, culpa corrupti
-          architecto saepe nulla dolor beatae natus! Incidunt ea, voluptate
-          possimus molestias mollitia odio, necessitatibus non quo consequuntur
-          magnam dolor ipsam? Adipisci sunt ab iure, doloribus quas similique!
-          Delectus illo mollitia modi, laboriosam maxime distinctio, veritatis
-          at consequatur quis laudantium amet eaque ab enim quam, cupiditate
-          totam non accusantium numquam necessitatibus error dolor odit
-          praesentium! Voluptates magni ab corporis eaque animi repudiandae
-          iste, nisi delectus quisquam cumque at assumenda laboriosam natus
-          esse, qui ducimus suscipit quis? Itaque a architecto labore
-          accusantium, quia eos veritatis. Velit ex architecto necessitatibus
-          quidem corporis possimus illo non ad soluta, quaerat mollitia
-          reiciendis vitae eos consectetur ipsum suscipit, doloremque
-          consequatur fuga minus est pariatur cupiditate. Consectetur nemo
-          aperiam explicabo dolore, laboriosam quam iure in itaque ut quaerat id
-          tempora repellendus repellat nesciunt cupiditate eos reprehenderit
-          corrupti veniam libero culpa, atque saepe nostrum voluptate! Alias
-          nostrum, dolores quis, nulla optio explicabo totam iusto accusantium
-          minima a quos possimus quisquam nam maiores excepturi veniam. Eligendi
-          voluptatem laboriosam delectus. Quod, nisi, necessitatibus sequi
-          facere quis cum nesciunt perferendis quas consectetur distinctio
-          commodi incidunt quos architecto quidem reprehenderit soluta! Placeat,
-          delectus nulla animi molestiae inventore dolorem! Consequatur rem
-          ratione ex fugit dolor porro, cum itaque laudantium atque, tempora,
-          amet velit excepturi corporis? Accusantium, maxime. Doloremque iusto
-          cupiditate cum odio dolor, modi aperiam culpa pariatur quae tenetur
-          aliquid tempore amet enim magnam sunt harum beatae velit sapiente
-          deserunt suscipit quod perferendis deleniti ut. Ad, exercitationem
-          maiores deserunt quis quos, modi repudiandae corrupti sapiente non
-          architecto asperiores nobis fuga adipisci eveniet ducimus aliquid
-          ratione doloribus voluptas consectetur illum ipsa libero ex
-          dignissimos. Nesciunt, voluptas assumenda?
+      <div className="mt-6">
+        <h3 className="text-textPrimary text-xl font-semibold">
+          Formbricks | Full Stack Dev
+        </h3>
+        <p className="text-textSecondary text-sm">
+          Remote | August 2023 - Present
         </p>
+        <p className="text-textPrimary mt-2">
+          Working with Formbricks with the aim to build the best open source
+          experience management solution out there 💪
+        </p>
+        <ul className="list-disc ml-6 mt-2 text-textPrimary">
+          <li>
+            Implemented the feature for targeting and displaying surveys to
+            specific users, making surveys more personal and well timed!
+          </li>
+          <li>
+            Implemented bulletproof validation for the survey builder, ensuring
+            that no surveys are created with invalid configurations.
+          </li>
+          <li>
+            Worked on the feature for exporting survey data to CSV, making it
+            easy for users to analyze and visualize their data.
+          </li>
+          <li>
+            Implemented the entire storage system for Formbricks, ensuring users
+            and admins can easily upload files and take files in responses.
+          </li>
+        </ul>
+      </div>
+
+      {/* Tealfeed Internship */}
+      <div className="mt-6">
+        <h3 className="text-textPrimary text-xl font-semibold">
+          Tealfeed | Software Engineering Intern
+        </h3>
+        <p className="text-textSecondary text-sm">
+          Gurgaon, India | July 2022 - Present
+        </p>
+        <ul className="list-disc ml-6 mt-2 text-textPrimary">
+          <li>Implemented type checking on the front-end using TypeScript.</li>
+          <li>
+            Refactored the code-base and integrated react-query for data
+            management, including handling invalidating queries and optimistic
+            updates.
+          </li>
+          <li>
+            Worked on Tealfeed’s Creator Program, implemented the front-end with
+            Next.js and TypeScript.
+          </li>
+        </ul>
+      </div>
+
+      {/* Trell Internship */}
+      <div className="mt-6">
+        <h3 className="text-textPrimary text-xl font-semibold">
+          Trell | Software Engineering Intern
+        </h3>
+        <p className="text-textSecondary text-sm">
+          Remote | February 2022 – June 2022
+        </p>
+        <ul className="list-disc ml-6 mt-2 text-textPrimary">
+          <li>Implemented Storybook for React components with TypeScript.</li>
+          <li>
+            Worked with the post-order team to migrate cart and payments pages
+            from CRA to Next.js.
+          </li>
+          <li>
+            Used redux-toolkit for state management and data fetching throughout
+            the project.
+          </li>
+        </ul>
+      </div>
+
+      {/* Quinn Internship */}
+      <div className="mt-6">
+        <h3 className="text-textPrimary text-xl font-semibold">
+          Quinn | Software Engineering Intern
+        </h3>
+        <p className="text-textSecondary text-sm">
+          Remote | May 2021 – November 2021
+        </p>
+        <ul className="list-disc ml-6 mt-2 text-textPrimary">
+          <li>
+            Converted designs to UI components with Next.js and Tailwind CSS.
+          </li>
+          <li>
+            Built a blog for the web app and learned about CMS and static site
+            generation.
+          </li>
+          <li>
+            Used react-query to implement hooks for data fetching and caching.
+          </li>
+          <li>
+            Developed a React package for a Shopify video-based product slider
+            for e-commerce stores.
+          </li>
+        </ul>
       </div>
     </div>
   );

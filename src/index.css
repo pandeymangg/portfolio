@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  background-color: #1f1d2e;
+}
+
 main {
   font-family: "Noto Sans", sans-serif;
 }
