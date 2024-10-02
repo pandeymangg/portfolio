@@ -75,9 +75,13 @@ const Leaf = ({
           {contextMenuOpened && (
             <div
               className={cn(
-                "absolute top-4 left-0 bottom-10 min-w-max min-h-max bg-bgTertiary"
+                "absolute top-4 left-0 bottom-12 min-w-max min-h-max bg-bgTertiary border rounded-lg border-borderPrimary"
               )}
             >
+              <p className="text-textPrimary text-xs px-3 py-2 text-left">
+                Replace with
+              </p>
+
               {componentStack
                 ?.filter((id) => id !== leaf.id)
                 ?.map((item) => {
@@ -86,7 +90,7 @@ const Leaf = ({
                       onClick={() => {
                         if (onReArrange) onReArrange(leaf.id, item);
                       }}
-                      className="block py-2 px-3 bg-bgTertiary hover:bg-bgSecondary cursor-pointer"
+                      className="block py-2 px-3 w-full bg-bgTertiary hover:bg-bgSecondary cursor-pointer text-left"
                     >
                       <span className="text-sm text-textPrimary">
                         {getComponentLabelById(item)}
@@ -146,34 +150,36 @@ const Dwindle: React.FC<DwindleProps> = ({
                 key={leaf.id}
                 activeElementId={activeElementId}
                 setActiveElementId={setActiveElementId}
-                height={ratio > 1 ? height : height / 2}
                 leaf={leaf}
-                width={ratio > 1 ? width / 2 : width}
+                height={height}
+                width={width}
                 onDelete={onDelete}
-                componentStack={componentStack}
-                onReArrange={onReArrange}
-              />
-            );
-          } else {
-            return (
-              <Dwindle
-                key={leaf.id}
-                config={leaf}
-                width={
-                  ratio > 1
-                    ? leaf.leaves.length > 1
-                      ? width / 2
-                      : width
-                    : width
-                }
-                height={ratio > 1 ? height : height / 2}
-                onDelete={onDelete}
-                gap={gap}
                 componentStack={componentStack}
                 onReArrange={onReArrange}
               />
             );
           }
+
+          return (
+            <Dwindle
+              key={leaf.id}
+              config={leaf}
+              width={
+                ratio > 1 ? (leaf.leaves.length > 1 ? width / 2 : width) : width
+              }
+              height={
+                ratio > 1
+                  ? height
+                  : leaf.leaves.length > 1
+                  ? height / 2
+                  : height
+              }
+              onDelete={onDelete}
+              gap={gap}
+              componentStack={componentStack}
+              onReArrange={onReArrange}
+            />
+          );
         })}
       </AnimatePresence>
     </motion.div>
