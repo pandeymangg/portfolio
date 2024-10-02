@@ -52,9 +52,8 @@ const Dwindle: React.FC<DwindleProps> = ({
                 }}
                 onMouseEnter={() => setActiveElementId(leaf.id)}
                 onMouseLeave={() => setActiveElementId("")}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
