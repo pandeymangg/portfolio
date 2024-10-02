@@ -61,7 +61,6 @@ function App() {
             if (componentStack.includes(item.id)) {
               return;
             }
-
             const component = getComponent(item.id);
             if (component) {
               setConfig(
