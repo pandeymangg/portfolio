@@ -9,6 +9,7 @@ export default {
         textPrimary: "#e0def4",
         textRose: "#ea9a97",
         borderPrimary: "#56526e",
+        iris: "#c4a7e7",
       },
     },
   },

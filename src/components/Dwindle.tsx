@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Root } from "../types";
+import { cn } from "../lib/cn";
+import { XIcon } from "lucide-react";
 
 interface DwindleProps {
   config: Root;
@@ -14,29 +16,27 @@ const Dwindle: React.FC<DwindleProps> = ({
   width,
   height,
   onDelete,
-  gap,
+  gap = 4,
 }) => {
   const [activeElementId, setActiveElementId] = useState("");
 
   const ratio = width / height;
-  const flexDirection = ratio > 1 ? "row" : "column";
+  const flexDirection = ratio > 1 ? "row" : "col";
+
   return (
     <div
-      className="root"
+      className={cn("flex", `flex-${flexDirection}`)}
       style={{
-        display: "flex",
-        flexDirection,
         width: `${width}px`,
         height: `${height}px`,
-        gap,
-        color: "white",
+        gap: `${gap}px`,
       }}
     >
       {config.leaves.map((leaf) => {
         if (leaf.type === "child") {
           return (
             <div
-              className={`border-2 border-borderPrimary rounded-md p-2 ${
+              className={`border-2 border-borderPrimary rounded-xl overflow-hidden ${
                 activeElementId === leaf.id && "border-textRose"
               }`}
               style={{
@@ -47,8 +47,19 @@ const Dwindle: React.FC<DwindleProps> = ({
               onMouseEnter={() => setActiveElementId(leaf.id)}
               onMouseLeave={() => setActiveElementId("")}
             >
+              <div className="h-6 px-4 py-2 flex items-center">
+                <button
+                  onClick={() => {
+                    onDelete(leaf.id);
+                  }}
+                  className="h-3 w-3 bg-red-500 rounded-full cursor-pointer flex items-center justify-center text-red-500 hover:text-white"
+                >
+                  <XIcon className="h-2 w-2" />
+                </button>
+              </div>
+
               {leaf.component}
-              <span
+              {/* <span
                 style={{
                   position: "absolute",
                   right: 4,
@@ -59,35 +70,20 @@ const Dwindle: React.FC<DwindleProps> = ({
                 onClick={() => onDelete(leaf.id)}
               >
                 close
-              </span>
+              </span> */}
             </div>
           );
         } else {
           return (
-            <div
-              className="root"
-              style={{
-                display: "flex",
-                flexDirection,
-                width: `${width}px`,
-                height: `${height}px`,
-                gap,
-              }}
-            >
-              <Dwindle
-                config={leaf}
-                width={
-                  ratio > 1
-                    ? leaf.leaves.length > 1
-                      ? width / 2
-                      : width
-                    : width
-                }
-                height={ratio > 1 ? height : height / 2}
-                onDelete={onDelete}
-                gap={gap}
-              />
-            </div>
+            <Dwindle
+              config={leaf}
+              width={
+                ratio > 1 ? (leaf.leaves.length > 1 ? width / 2 : width) : width
+              }
+              height={ratio > 1 ? height : height / 2}
+              onDelete={onDelete}
+              gap={gap}
+            />
           );
         }
       })}
