@@ -5,7 +5,7 @@ export const Projects = () => {
         <h2 className="text-textPrimary text-2xl font-bold">Projects 🛠️</h2>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <h3 className="text-textPrimary text-xl font-semibold">
           <a
             href="https://formbricks.com"

@@ -7,7 +7,7 @@ export const Work = () => {
         </h2>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <h3 className="text-textPrimary text-xl font-semibold">
           Formbricks | Full Stack Dev
         </h3>

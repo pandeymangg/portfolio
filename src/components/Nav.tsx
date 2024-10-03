@@ -4,6 +4,7 @@ import {
   ClockIcon,
   FlaskConicalIcon,
   LinkedinIcon,
+  LinkIcon,
 } from "lucide-react";
 import { cn } from "../lib/cn";
 import { TabItem } from "../types";
@@ -15,6 +16,7 @@ const navItems: Array<TabItem> = [
   { id: "aboutMe", label: "👋 About Me" },
   { id: "work", label: "Work" },
   { id: "projects", label: "Projects" },
+  { id: "links", label: "Links" },
 ];
 
 interface NavProps {
@@ -54,12 +56,12 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
       <nav className="border-borderPrimary border-2 rounded-full shadow-xl px-4 py-1 bg-bgSecondary">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
-            <CalendarIcon className="text-iris w-4 h-4" />
+            <CalendarIcon className="text-customRed w-4 h-4" />
             <span className="text-sm text-textPrimary font-medium">{date}</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <ClockIcon className="text-iris w-4 h-4" />
+            <ClockIcon className="text-customRed w-4 h-4" />
             <span className="text-sm text-textPrimary font-medium">
               {currentTime}
             </span>
@@ -109,11 +111,15 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
               key={item.id}
             >
               {item.id === "work" && (
-                <BriefcaseBusinessIcon className="text-iris w-4 h-4" />
+                <BriefcaseBusinessIcon className="text-customRed w-4 h-4" />
               )}
 
               {item.id === "projects" && (
-                <FlaskConicalIcon className="text-iris w-4 h-4" />
+                <FlaskConicalIcon className="text-customRed w-4 h-4" />
+              )}
+
+              {item.id === "links" && (
+                <LinkIcon className="text-customRed w-4 h-4" />
               )}
 
               <span

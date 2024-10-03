@@ -26,7 +26,7 @@ function App() {
   }, [parentRef]);
 
   return (
-    <main className="h-screen w-screen bg-gradient-to-b from-bgPrimary to-[#21202e] relative">
+    <main className="h-screen w-screen bg-gradient-to-b from-bgPrimary to-bgSecondary relative">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
         <Ascii />
 

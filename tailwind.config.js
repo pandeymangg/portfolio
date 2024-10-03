@@ -4,16 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        bgPrimary: "#191724",
-        bgSecondary: "#1f1d2e",
-        bgTertiary: "#26233a",
+        bgPrimary: "#101010",
+        bgSecondary: "#121212",
         textPrimary: "#e0def4",
         textSecondary: "#908caa",
         textRose: "#ea9a97",
+        orange: "#ffc799",
         pine: "#31748f",
         borderPrimary: "#524f67",
         iris: "#c4a7e7",
         gold: "#f6c177",
+        customRed: "#ff8080",
       },
     },
   },

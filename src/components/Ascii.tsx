@@ -1,7 +1,7 @@
 export const Ascii = () => {
   return (
     <div>
-      <pre className="text-lg text-textRose">
+      <pre className="text-lg text-orange">
         {`
  _ __   __ _ _ __   __|-| ___ _   _ _ __ ___   __ _ _ __  
 | '_ \\ / _\` | '_ \\ / _\` |/ _ \\ | | | '_ \` _ \\ / _\` | '_ \\ 
