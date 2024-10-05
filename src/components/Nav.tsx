@@ -25,7 +25,6 @@ interface NavProps {
 }
 
 export const Nav = ({ componentStack, onItemChange }: NavProps) => {
-  // get the date like Wed, 02 Oct 2024
   const date = new Date().toDateString().split(" ").join(", ");
 
   const time = new Date().toLocaleTimeString("en-US", {
@@ -36,7 +35,6 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
 
   const [currentTime, setCurrentTime] = useState(time);
 
-  // listen to the time change
   useEffect(() => {
     const interval = setInterval(() => {
       const newTime = new Date().toLocaleTimeString("en-US", {
@@ -69,30 +67,32 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
         </div>
       </nav>
 
-      <nav className="border-borderPrimary border-2 rounded-full shadow-xl px-4 py-1 bg-bgSecondary flex items-center gap-4">
-        <a
-          target="_blank"
-          href="https://github.com/pandeymangg"
-          rel="noopener noreferrer"
-        >
-          <GithubIcon className="text-textPrimary" />
-        </a>
+      <nav className="flex-1 px-4 py-1 bg-bgSecondary flex justify-center gap-4">
+        <div className="w-max px-4 py-1 gap-2 flex items-center border-borderPrimary border-2 rounded-full">
+          <a
+            target="_blank"
+            href="https://github.com/pandeymangg"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon className="text-textPrimary" />
+          </a>
 
-        <a
-          target="_blank"
-          href="https://x.com/pandeymangg"
-          rel="noopener noreferrer"
-        >
-          <XIcon className="h-4 w-4 fill-textPrimary" />
-        </a>
+          <a
+            target="_blank"
+            href="https://x.com/pandeymangg"
+            rel="noopener noreferrer"
+          >
+            <XIcon className="h-4 w-4 fill-textPrimary" />
+          </a>
 
-        <a
-          target="_blank"
-          href="https://linkedin.com/in/pandeyman"
-          rel="noopener noreferrer"
-        >
-          <LinkedinIcon className="text-textPrimary h-4 w-4" />
-        </a>
+          <a
+            target="_blank"
+            href="https://linkedin.com/in/pandeyman"
+            rel="noopener noreferrer"
+          >
+            <LinkedinIcon className="text-textPrimary h-4 w-4" />
+          </a>
+        </div>
       </nav>
 
       <nav className="border-borderPrimary border-2 rounded-full shadow-xl px-4 py-1 bg-bgSecondary">

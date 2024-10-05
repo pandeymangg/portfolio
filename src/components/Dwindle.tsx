@@ -10,6 +10,7 @@ interface LeafProps {
   setActiveElementId: React.Dispatch<React.SetStateAction<string>>;
   width: number;
   height: number;
+  setWidth: (width: number) => void;
   onDelete: (id: string) => void;
   onReArrange?: (source: string, destination: string) => void;
   componentStack?: Array<string>;
@@ -17,23 +18,17 @@ interface LeafProps {
 
 const Leaf = ({
   activeElementId,
-  height: heightProp,
   leaf,
   onDelete,
   setActiveElementId,
-  width: widthProp,
+  height,
+  width,
+  setWidth,
   componentStack,
   onReArrange,
 }: LeafProps) => {
   const [contextMenuOpened, setContextMenuOpened] = useState(false);
   const leafRef = React.useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(widthProp);
-  const [height, setHeight] = useState(heightProp);
-
-  useEffect(() => {
-    setWidth(widthProp);
-    setHeight(heightProp);
-  }, [heightProp, widthProp]);
 
   return (
     <div
@@ -72,7 +67,7 @@ const Leaf = ({
           {contextMenuOpened && (
             <div
               className={cn(
-                "absolute top-4 left-0 bottom-12 min-w-max min-h-max bg-bgTertiary border rounded-lg border-borderPrimary"
+                "absolute top-4 left-0 bottom-12 min-w-max min-h-max bg-bgTertiary border rounded-lg bg-bgSecondary border-borderPrimary"
               )}
             >
               <p className="text-textPrimary text-xs px-3 py-2 text-left">
@@ -86,6 +81,7 @@ const Leaf = ({
                     <button
                       onClick={() => {
                         if (onReArrange) onReArrange(leaf.id, item);
+                        setContextMenuOpened(false);
                       }}
                       className="block py-2 px-3 w-full bg-bgTertiary hover:bg-bgSecondary cursor-pointer text-left"
                     >
@@ -99,12 +95,18 @@ const Leaf = ({
           )}
         </div>
 
-        {/* <button
+        <button
           className="text-textPrimary"
-          onClick={() => setWidth((prev) => prev + 10)}
+          onClick={() => {
+            setWidth(10);
+          }}
         >
           +
-        </button> */}
+        </button>
+
+        <button className="text-textPrimary" onClick={() => setWidth(-10)}>
+          -
+        </button>
       </div>
       {leaf.component}
     </div>
@@ -119,24 +121,30 @@ interface DwindleProps {
   gap?: number;
   componentStack?: Array<string>;
   onReArrange?: (source: string, destination: string) => void;
-  layoutId?: string;
 }
 
 const Dwindle: React.FC<DwindleProps> = ({
   config,
-  width,
-  height,
+  width: widthProp,
+  height: heightProp,
   onDelete,
   gap = 4,
   componentStack,
   onReArrange,
-  layoutId,
 }) => {
   const [activeElementId, setActiveElementId] = useState("");
-  const ratio = width / height;
-  const flexDirection = ratio > 1 ? "row" : "col";
+  const [width, setWidth] = useState(widthProp);
+  const [height, setHeight] = useState(heightProp);
 
-  const leafWidth = useMemo(() => {
+  useEffect(() => {
+    setWidth(widthProp);
+    setHeight(heightProp);
+  }, [heightProp, widthProp]);
+
+  const ratio = useMemo(() => width / height, [width, height]);
+  const flexDirection = useMemo(() => (ratio > 1 ? "row" : "col"), [ratio]);
+
+  const leafWidthDerived = useMemo(() => {
     if (config.leaves.length > 1) {
       if (ratio > 1) {
         return width / 2;
@@ -148,7 +156,7 @@ const Dwindle: React.FC<DwindleProps> = ({
     return width;
   }, [config.leaves.length, ratio, width]);
 
-  const leafHeight = useMemo(() => {
+  const leafHeightDerived = useMemo(() => {
     if (config.leaves.length > 1) {
       if (ratio > 1) {
         return height;
@@ -160,6 +168,20 @@ const Dwindle: React.FC<DwindleProps> = ({
     return height;
   }, [config.leaves.length, ratio, height]);
 
+  const [leafWidth, setLeafWidth] = useState(leafWidthDerived);
+  const [leafHeight, setLeafHeight] = useState(leafHeightDerived);
+
+  useEffect(() => {
+    setLeafWidth(leafWidthDerived);
+    setLeafHeight(leafHeightDerived);
+  }, [leafHeightDerived, leafWidthDerived]);
+
+  const [child, rootOrChild] = config.leaves;
+
+  if (!child && !rootOrChild) {
+    return null;
+  }
+
   return (
     <div
       className={cn("flex", `flex-${flexDirection}`)}
@@ -169,43 +191,47 @@ const Dwindle: React.FC<DwindleProps> = ({
         gap: `${gap}px`,
       }}
     >
-      {config.leaves.map((leaf, index) => {
-        const childLayoutId = `${layoutId || "root"}-${index}`;
+      <Leaf
+        activeElementId={activeElementId}
+        setActiveElementId={setActiveElementId}
+        leaf={child as Child}
+        width={leafWidth}
+        height={leafHeight}
+        setWidth={(width) => {
+          setLeafWidth(leafWidth + width);
+        }}
+        onDelete={onDelete}
+        componentStack={componentStack}
+        onReArrange={onReArrange}
+      />
 
-        if (leaf.type === "child") {
-          return (
-            <Leaf
-              key={leaf.id}
-              activeElementId={activeElementId}
-              setActiveElementId={setActiveElementId}
-              leaf={leaf}
-              width={leafWidth}
-              height={leafHeight}
-              onDelete={onDelete}
-              componentStack={componentStack}
-              onReArrange={onReArrange}
-            />
-          );
-        }
-
-        return (
+      {rootOrChild ? (
+        rootOrChild.type === "child" ? (
+          <Leaf
+            activeElementId={activeElementId}
+            setActiveElementId={setActiveElementId}
+            leaf={rootOrChild as Child}
+            width={flexDirection === "row" ? width - leafWidth : width}
+            height={flexDirection === "row" ? height : height - leafHeight}
+            setWidth={(width) => {
+              setLeafWidth(leafWidth - width);
+            }}
+            onDelete={onDelete}
+            componentStack={componentStack}
+            onReArrange={onReArrange}
+          />
+        ) : (
           <Dwindle
-            key={leaf.id}
-            config={leaf}
-            width={
-              ratio > 1 ? (leaf.leaves.length > 1 ? width / 2 : width) : width
-            }
-            height={
-              ratio > 1 ? height : leaf.leaves.length > 1 ? height / 2 : height
-            }
+            config={rootOrChild as Root}
+            width={flexDirection === "row" ? width - leafWidth : width}
+            height={flexDirection === "row" ? height : height - leafHeight}
             onDelete={onDelete}
             gap={gap}
             componentStack={componentStack}
             onReArrange={onReArrange}
-            layoutId={childLayoutId}
           />
-        );
-      })}
+        )
+      ) : null}
     </div>
   );
 };
