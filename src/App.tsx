@@ -3,10 +3,13 @@ import { Nav } from "./components/Nav";
 import Dwindle from "./components/Dwindle";
 import { addComponent, getConfig, removeComponent } from "./lib/dwindle";
 import { INITIAL_CONFIG } from "./lib/constants";
-import { Root } from "./types";
+import { Root, TWindowManagerConfig } from "./types";
 import { Ascii } from "./components/Ascii";
 import { LayoutPanelLeftIcon } from "lucide-react";
+import { DEFAULT_WINDOW_MANAGER_CONFIG } from "./lib/wmConfig";
 import { getComponentById } from "./lib/utils";
+import { WindowManagerConfig } from "./components/WindowManagerConfig";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const [componentStack, setComponentStack] = useState<Array<string>>([]);
@@ -15,6 +18,13 @@ function App() {
   const [parentWidth, setParentWidth] = useState<number>(0);
 
   const [config, setConfig] = useState<Root>(INITIAL_CONFIG);
+  const [isConfigDialogOpen, setIsConfigDialogOpen] = useState(false);
+
+  const [windowManagerConfig, setWindowManagerConfig] =
+    useLocalStorage<TWindowManagerConfig>(
+      "windowManagerConfig",
+      DEFAULT_WINDOW_MANAGER_CONFIG
+    );
 
   useEffect(() => {
     if (parentRef.current) {
@@ -47,6 +57,9 @@ function App() {
         }`}
       >
         <Nav
+          onConfigClick={() => {
+            setIsConfigDialogOpen(true);
+          }}
           onItemChange={(item) => {
             if (componentStack.includes(item.id)) {
               return;
@@ -73,6 +86,7 @@ function App() {
           >
             <Dwindle
               config={config}
+              windowManagerConfig={windowManagerConfig}
               height={parentHeight}
               width={parentWidth}
               onDelete={(leafId: string) => {
@@ -115,10 +129,16 @@ function App() {
                   return;
                 }
               }}
-              gap={10}
             />
           </div>
         )}
+
+        <WindowManagerConfig
+          open={isConfigDialogOpen}
+          setOpen={setIsConfigDialogOpen}
+          windowManagerConfig={windowManagerConfig}
+          setWindowManagerConfig={setWindowManagerConfig}
+        />
       </div>
     </main>
   );

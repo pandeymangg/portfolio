@@ -1,3 +1,5 @@
+import { DEFAULT_WINDOW_MANAGER_CONFIG } from "./lib/wmConfig";
+
 export type Child = {
   type: "child";
   id: string;
@@ -14,3 +16,5 @@ export type TabItem = {
   id: string;
   label: string;
 };
+
+export type TWindowManagerConfig = typeof DEFAULT_WINDOW_MANAGER_CONFIG;

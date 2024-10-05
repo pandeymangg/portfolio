@@ -5,6 +5,7 @@ import {
   FlaskConicalIcon,
   LinkedinIcon,
   LinkIcon,
+  SettingsIcon,
 } from "lucide-react";
 import { cn } from "../lib/cn";
 import { TabItem } from "../types";
@@ -22,9 +23,14 @@ const navItems: Array<TabItem> = [
 interface NavProps {
   onItemChange: (item: TabItem) => void;
   componentStack: Array<string>;
+  onConfigClick: () => void;
 }
 
-export const Nav = ({ componentStack, onItemChange }: NavProps) => {
+export const Nav = ({
+  componentStack,
+  onItemChange,
+  onConfigClick,
+}: NavProps) => {
   const date = new Date().toDateString().split(" ").join(", ");
 
   const time = new Date().toLocaleTimeString("en-US", {
@@ -67,7 +73,7 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
         </div>
       </nav>
 
-      <nav className="flex-1 px-4 py-1 bg-bgSecondary flex justify-center gap-4">
+      <nav className="flex-1 px-4 py-1 bg-bgPrimary flex justify-center gap-4">
         <div className="w-max px-4 py-1 gap-2 flex items-center border-borderPrimary border-2 rounded-full">
           <a
             target="_blank"
@@ -131,6 +137,24 @@ export const Nav = ({ componentStack, onItemChange }: NavProps) => {
               </span>
             </button>
           ))}
+
+          <button
+            className={cn(
+              "px-3 py-1 rounded-full flex items-center gap-2 text-sm"
+            )}
+            onClick={() => {
+              onConfigClick();
+            }}
+          >
+            <SettingsIcon className="text-customRed w-4 h-4" />
+            <span
+              className={cn(
+                "relative text-sm z-10 row-start-1 col-start-1 rounded-full text-textPrimary"
+              )}
+            >
+              Config
+            </span>
+          </button>
         </div>
       </nav>
     </nav>
