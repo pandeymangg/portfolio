@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Child, Root, TWindowManagerConfig } from "../types";
 import { cn } from "../lib/cn";
 import { Leaf } from "./Leaf";
+import { AnimatePresence } from "framer-motion";
 
 interface DwindleProps {
   config: Root;
@@ -72,6 +73,9 @@ const Dwindle: React.FC<DwindleProps> = ({
     return null;
   }
 
+  // Determine if we're in a horizontal or vertical split
+  const isRow = flexDirection === "row";
+
   return (
     <div
       className={cn("flex", `flex-${flexDirection}`)}
@@ -81,39 +85,42 @@ const Dwindle: React.FC<DwindleProps> = ({
         gap: `${windowManagerConfig.gap}px`,
       }}
     >
-      <Leaf
-        activeElementId={activeElementId}
-        setActiveElementId={setActiveElementId}
-        leaf={child as Child}
-        width={leafWidth}
-        height={leafHeight}
-        setWidth={(width) => {
-          setLeafWidth(leafWidth + width);
-        }}
-        onDelete={onDelete}
-        componentStack={componentStack}
-        onReArrange={onReArrange}
-        windowManagerConfig={windowManagerConfig}
-      />
+      <AnimatePresence initial={false}>
+        {/* First Leaf */}
+        <Leaf
+          activeElementId={activeElementId}
+          setActiveElementId={setActiveElementId}
+          leaf={child as Child}
+          width={leafWidth}
+          height={leafHeight}
+          setWidth={(width) => {
+            setLeafWidth(leafWidth + width);
+          }}
+          onDelete={onDelete}
+          componentStack={componentStack}
+          onReArrange={onReArrange}
+          windowManagerConfig={windowManagerConfig}
+          isRow={isRow}
+        />
+      </AnimatePresence>
 
       {rootOrChild ? (
         rootOrChild.type === "child" ? (
-          <div>
-            <Leaf
-              activeElementId={activeElementId}
-              setActiveElementId={setActiveElementId}
-              leaf={rootOrChild as Child}
-              width={flexDirection === "row" ? width - leafWidth : width}
-              height={flexDirection === "row" ? height : height - leafHeight}
-              setWidth={(width) => {
-                setLeafWidth(leafWidth - width);
-              }}
-              onDelete={onDelete}
-              componentStack={componentStack}
-              onReArrange={onReArrange}
-              windowManagerConfig={windowManagerConfig}
-            />
-          </div>
+          <Leaf
+            activeElementId={activeElementId}
+            setActiveElementId={setActiveElementId}
+            leaf={rootOrChild as Child}
+            width={flexDirection === "row" ? width - leafWidth : width}
+            height={flexDirection === "row" ? height : height - leafHeight}
+            setWidth={(width) => {
+              setLeafWidth(leafWidth - width);
+            }}
+            onDelete={onDelete}
+            componentStack={componentStack}
+            onReArrange={onReArrange}
+            windowManagerConfig={windowManagerConfig}
+            isRow={isRow}
+          />
         ) : (
           <Dwindle
             config={rootOrChild as Root}

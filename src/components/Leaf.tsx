@@ -3,6 +3,7 @@ import { cn } from "../lib/cn";
 import { Child, TWindowManagerConfig } from "../types";
 import { EllipsisVerticalIcon, XIcon } from "lucide-react";
 import { getComponentLabelById } from "../lib/utils";
+import { motion } from "framer-motion";
 
 interface LeafProps {
   leaf: Child;
@@ -15,6 +16,7 @@ interface LeafProps {
   onReArrange?: (source: string, destination: string) => void;
   componentStack?: Array<string>;
   windowManagerConfig: TWindowManagerConfig;
+  isRow: boolean;
 }
 
 export const Leaf = ({
@@ -28,14 +30,21 @@ export const Leaf = ({
   componentStack,
   onReArrange,
   windowManagerConfig,
+  isRow,
 }: LeafProps) => {
   const [contextMenuOpened, setContextMenuOpened] = useState(false);
   const leafRef = useRef<HTMLDivElement>(null);
   const { activeBorderColor, borderRadius, borderWidth, inactiveBorderColor } =
     windowManagerConfig;
 
+  // Determine size prop for animation
+  const sizeProp = isRow ? "width" : "height";
+  const sizeValue = isRow ? width : height;
+
   return (
-    <div
+    <motion.div
+      key={leaf.id}
+      ref={leafRef}
       className={cn("overflow-hidden transition-colors duration-300")}
       style={{
         position: "relative",
@@ -45,11 +54,15 @@ export const Leaf = ({
           activeElementId === leaf.id ? activeBorderColor : inactiveBorderColor
         }`,
         borderRadius: `${borderRadius}px`,
-        transition: "width 0.3s ease, height 0.3s ease",
       }}
       onMouseEnter={() => setActiveElementId(leaf.id)}
       onMouseLeave={() => setActiveElementId("")}
-      ref={leafRef}
+      // Animation Props
+      initial={{ [sizeProp]: 0, opacity: 0 }}
+      animate={{ [sizeProp]: sizeValue, opacity: 1 }}
+      exit={{ [sizeProp]: 0, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      layout
     >
       <div className="h-6 px-4 py-2 flex items-center gap-2 bg-bgSecondary">
         <button
@@ -117,6 +130,6 @@ export const Leaf = ({
         </button>
       </div>
       {leaf.component}
-    </div>
+    </motion.div>
   );
 };
