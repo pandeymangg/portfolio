@@ -98,20 +98,22 @@ const Dwindle: React.FC<DwindleProps> = ({
 
       {rootOrChild ? (
         rootOrChild.type === "child" ? (
-          <Leaf
-            activeElementId={activeElementId}
-            setActiveElementId={setActiveElementId}
-            leaf={rootOrChild as Child}
-            width={flexDirection === "row" ? width - leafWidth : width}
-            height={flexDirection === "row" ? height : height - leafHeight}
-            setWidth={(width) => {
-              setLeafWidth(leafWidth - width);
-            }}
-            onDelete={onDelete}
-            componentStack={componentStack}
-            onReArrange={onReArrange}
-            windowManagerConfig={windowManagerConfig}
-          />
+          <div>
+            <Leaf
+              activeElementId={activeElementId}
+              setActiveElementId={setActiveElementId}
+              leaf={rootOrChild as Child}
+              width={flexDirection === "row" ? width - leafWidth : width}
+              height={flexDirection === "row" ? height : height - leafHeight}
+              setWidth={(width) => {
+                setLeafWidth(leafWidth - width);
+              }}
+              onDelete={onDelete}
+              componentStack={componentStack}
+              onReArrange={onReArrange}
+              windowManagerConfig={windowManagerConfig}
+            />
+          </div>
         ) : (
           <Dwindle
             config={rootOrChild as Root}

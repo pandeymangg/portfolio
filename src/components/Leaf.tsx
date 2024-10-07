@@ -45,6 +45,7 @@ export const Leaf = ({
           activeElementId === leaf.id ? activeBorderColor : inactiveBorderColor
         }`,
         borderRadius: `${borderRadius}px`,
+        transition: "width 0.3s ease, height 0.3s ease",
       }}
       onMouseEnter={() => setActiveElementId(leaf.id)}
       onMouseLeave={() => setActiveElementId("")}
@@ -72,12 +73,14 @@ export const Leaf = ({
           {contextMenuOpened && (
             <div
               className={cn(
-                "absolute top-4 left-0 bottom-12 min-w-max min-h-max bg-bgTertiary border rounded-lg bg-bgSecondary border-borderPrimary"
+                "absolute top-4 left-0 bottom-12 min-w-max min-h-max bg-bgSecondary border rounded-lg border-borderPrimary"
               )}
             >
-              <p className="text-textPrimary text-xs px-3 py-2 text-left">
-                Replace with
-              </p>
+              <div className="bg-bgSecondary px-3 py-2">
+                <p className="text-textPrimary text-xs text-left">
+                  Replace with
+                </p>
+              </div>
 
               {componentStack
                 ?.filter((id) => id !== leaf.id)
@@ -88,7 +91,7 @@ export const Leaf = ({
                         if (onReArrange) onReArrange(leaf.id, item);
                         setContextMenuOpened(false);
                       }}
-                      className="block py-2 px-3 w-full bg-bgTertiary hover:bg-bgSecondary cursor-pointer text-left"
+                      className="block py-2 px-3 w-full bg-bgSecondary hover:bg-bgSecondary cursor-pointer text-left"
                     >
                       <span className="text-sm text-textPrimary">
                         {getComponentLabelById(item)}
