@@ -87,11 +87,14 @@ export const WindowManagerConfig = ({
                 type="color"
                 id="activeBorderColor"
                 name="activeBorderColor"
-                value={localWindowManagerConfig.activeBorderColor}
+                value={localWindowManagerConfig.activeBorderColor.light}
                 onChange={(e) =>
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
-                    activeBorderColor: e.target.value,
+                    activeBorderColor: {
+                      ...prev.activeBorderColor,
+                      light: e.target.value,
+                    },
                   }))
                 }
               />
@@ -104,11 +107,14 @@ export const WindowManagerConfig = ({
                 type="color"
                 id="inactiveBorderColor"
                 name="inactiveBorderColor"
-                value={localWindowManagerConfig.inactiveBorderColor}
+                value={localWindowManagerConfig.inactiveBorderColor.light}
                 onChange={(e) =>
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
-                    inactiveBorderColor: e.target.value,
+                    inactiveBorderColor: {
+                      ...prev.inactiveBorderColor,
+                      light: e.target.value,
+                    },
                   }))
                 }
               />

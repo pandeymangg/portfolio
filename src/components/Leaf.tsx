@@ -51,7 +51,9 @@ export const Leaf = ({
         width: `${width}px`,
         height: `${height}px`,
         border: `${borderWidth}px solid ${
-          activeElementId === leaf.id ? activeBorderColor : inactiveBorderColor
+          activeElementId === leaf.id
+            ? activeBorderColor.light
+            : inactiveBorderColor.light
         }`,
         borderRadius: `${borderRadius}px`,
       }}

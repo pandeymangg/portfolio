@@ -57,7 +57,7 @@ export const Nav = ({
 
   return (
     <nav className="flex justify-between items-center">
-      <nav className="border-borderPrimary border-2 rounded-full shadow-xl px-4 py-1 bg-bgSecondary">
+      <nav className="border-borderPrimary border-2 rounded-full px-4 py-1 bg-bgSecondary">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
             <CalendarIcon className="text-customRed w-4 h-4" />
@@ -73,35 +73,33 @@ export const Nav = ({
         </div>
       </nav>
 
-      <nav className="flex-1 px-4 py-1 bg-bgPrimary flex justify-center gap-4">
-        <div className="w-max px-4 py-1 gap-2 flex items-center border-borderPrimary border-2 rounded-full">
-          <a
-            target="_blank"
-            href="https://github.com/pandeymangg"
-            rel="noopener noreferrer"
-          >
-            <GithubIcon className="text-textPrimary" />
-          </a>
+      <nav className="w-max px-4 py-1 gap-2 flex items-center border-borderPrimary border-2 rounded-full bg-bgSecondary">
+        <a
+          target="_blank"
+          href="https://github.com/pandeymangg"
+          rel="noopener noreferrer"
+        >
+          <GithubIcon className="text-textPrimary" />
+        </a>
 
-          <a
-            target="_blank"
-            href="https://x.com/pandeymangg"
-            rel="noopener noreferrer"
-          >
-            <XIcon className="h-4 w-4 fill-textPrimary" />
-          </a>
+        <a
+          target="_blank"
+          href="https://x.com/pandeymangg"
+          rel="noopener noreferrer"
+        >
+          <XIcon className="h-4 w-4 fill-textPrimary" />
+        </a>
 
-          <a
-            target="_blank"
-            href="https://linkedin.com/in/pandeyman"
-            rel="noopener noreferrer"
-          >
-            <LinkedinIcon className="text-textPrimary h-4 w-4" />
-          </a>
-        </div>
+        <a
+          target="_blank"
+          href="https://linkedin.com/in/pandeyman"
+          rel="noopener noreferrer"
+        >
+          <LinkedinIcon className="text-textPrimary h-4 w-4" />
+        </a>
       </nav>
 
-      <nav className="border-borderPrimary border-2 rounded-full shadow-xl px-4 py-1 bg-bgSecondary">
+      <nav className="border-borderPrimary border-2 rounded-full px-4 py-1 bg-bgSecondary">
         <div className="flex items-center gap-2">
           {navItems.map((item) => (
             <button
