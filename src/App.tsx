@@ -10,8 +10,10 @@ import { DEFAULT_WINDOW_MANAGER_CONFIG } from "./lib/wmConfig";
 import { getComponentById } from "./lib/utils";
 import { WindowManagerConfig } from "./components/WindowManagerConfig";
 import useLocalStorage from "./hooks/useLocalStorage";
+import { useAppContext } from "./hooks/useAppContext";
 
 function App() {
+  const { theme } = useAppContext();
   const [componentStack, setComponentStack] = useState<Array<string>>([]);
   const parentRef = useRef<HTMLDivElement>(null);
   const [parentHeight, setParentHeight] = useState<number>(0);
@@ -34,6 +36,16 @@ function App() {
       setParentWidth(clientWidth);
     }
   }, [parentRef]);
+
+  useEffect(() => {
+    // add theme to the html element's classList
+    const html = document.querySelector("html");
+    if (theme === "dark") {
+      html?.classList?.add("dark");
+    } else {
+      html?.classList?.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <main className="h-screen w-screen bg-bgPrimary relative">
@@ -67,7 +79,11 @@ function App() {
             const component = getComponentById(item.id);
             if (component) {
               setConfig(
-                addComponent(config, { type: "child", id: item.id, component })
+                addComponent(config, {
+                  type: "child",
+                  id: item.id,
+                  component,
+                })
               );
 
               setComponentStack((prev) => [...prev, item.id]);

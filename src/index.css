@@ -12,8 +12,8 @@ main {
 }
 
 :root {
-  --bg-primary: #f2e5bc;
-  --bg-secondary: #ebdbb2;
+  --bg-primary: #fbfbfb;
+  --bg-secondary: #f0f0f0;
   --text-primary: #282828;
   --text-secondary: #3c3836;
   --border-primary: #7c6f64;

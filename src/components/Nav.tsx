@@ -5,13 +5,16 @@ import {
   FlaskConicalIcon,
   LinkedinIcon,
   LinkIcon,
+  MoonIcon,
   SettingsIcon,
+  SunIcon,
 } from "lucide-react";
 import { cn } from "../lib/cn";
 import { TabItem } from "../types";
 import { useEffect, useState } from "react";
 import { GithubIcon } from "./icons/GithubIcon";
 import { XIcon } from "./icons/XIcon";
+import { useAppContext } from "@/hooks/useAppContext";
 
 const navItems: Array<TabItem> = [
   { id: "aboutMe", label: "👋 About Me" },
@@ -31,6 +34,7 @@ export const Nav = ({
   onItemChange,
   onConfigClick,
 }: NavProps) => {
+  const { theme, setTheme } = useAppContext();
   const date = new Date().toDateString().split(" ").join(", ");
 
   const time = new Date().toLocaleTimeString("en-US", {
@@ -70,6 +74,20 @@ export const Nav = ({
               {currentTime}
             </span>
           </div>
+
+          <button>
+            {theme === "dark" ? (
+              <SunIcon
+                onClick={() => setTheme("light")}
+                className="text-customRed w-4 h-4"
+              />
+            ) : (
+              <MoonIcon
+                onClick={() => setTheme("dark")}
+                className="text-customRed w-4 h-4"
+              />
+            )}
+          </button>
         </div>
       </nav>
 

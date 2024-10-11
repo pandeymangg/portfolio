@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { TWindowManagerConfig } from "@/types";
+import { useAppContext } from "@/hooks/useAppContext";
 
 interface WindowManagerConfigProps {
   open: boolean;
@@ -26,6 +27,28 @@ export const WindowManagerConfig = ({
 }: WindowManagerConfigProps) => {
   const [localWindowManagerConfig, setLocalWindowManagerConfig] =
     useState(windowManagerConfig);
+
+  const { theme } = useAppContext();
+
+  const activeBorderColor = useMemo(() => {
+    return theme === "dark"
+      ? localWindowManagerConfig.activeBorderColor.dark
+      : localWindowManagerConfig.activeBorderColor.light;
+  }, [
+    localWindowManagerConfig.activeBorderColor.dark,
+    localWindowManagerConfig.activeBorderColor.light,
+    theme,
+  ]);
+
+  const inactiveBorderColor = useMemo(() => {
+    return theme === "dark"
+      ? localWindowManagerConfig.inactiveBorderColor.dark
+      : localWindowManagerConfig.inactiveBorderColor.light;
+  }, [
+    localWindowManagerConfig.inactiveBorderColor.dark,
+    localWindowManagerConfig.inactiveBorderColor.light,
+    theme,
+  ]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -87,7 +110,7 @@ export const WindowManagerConfig = ({
                 type="color"
                 id="activeBorderColor"
                 name="activeBorderColor"
-                value={localWindowManagerConfig.activeBorderColor.light}
+                value={activeBorderColor}
                 onChange={(e) =>
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
@@ -107,7 +130,7 @@ export const WindowManagerConfig = ({
                 type="color"
                 id="inactiveBorderColor"
                 name="inactiveBorderColor"
-                value={localWindowManagerConfig.inactiveBorderColor.light}
+                value={inactiveBorderColor}
                 onChange={(e) =>
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,

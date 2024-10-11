@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { cn } from "../lib/cn";
 import { Child, TWindowManagerConfig } from "../types";
 import { EllipsisVerticalIcon, XIcon } from "lucide-react";
 import { getComponentLabelById } from "../lib/utils";
 import { motion } from "framer-motion";
+import { useAppContext } from "@/hooks/useAppContext";
 
 interface LeafProps {
   leaf: Child;
@@ -32,14 +33,34 @@ export const Leaf = ({
   windowManagerConfig,
   isRow,
 }: LeafProps) => {
+  const { theme } = useAppContext();
   const [contextMenuOpened, setContextMenuOpened] = useState(false);
   const leafRef = useRef<HTMLDivElement>(null);
-  const { activeBorderColor, borderRadius, borderWidth, inactiveBorderColor } =
-    windowManagerConfig;
+  const { borderRadius, borderWidth } = windowManagerConfig;
 
   // Determine size prop for animation
   const sizeProp = isRow ? "width" : "height";
   const sizeValue = isRow ? width : height;
+
+  const activeBorderColor = useMemo(() => {
+    return theme === "dark"
+      ? windowManagerConfig.activeBorderColor.dark
+      : windowManagerConfig.activeBorderColor.light;
+  }, [
+    windowManagerConfig.activeBorderColor.dark,
+    windowManagerConfig.activeBorderColor.light,
+    theme,
+  ]);
+
+  const inactiveBorderColor = useMemo(() => {
+    return theme === "dark"
+      ? windowManagerConfig.inactiveBorderColor.dark
+      : windowManagerConfig.inactiveBorderColor.light;
+  }, [
+    windowManagerConfig.inactiveBorderColor.dark,
+    windowManagerConfig.inactiveBorderColor.light,
+    theme,
+  ]);
 
   return (
     <motion.div
@@ -51,9 +72,7 @@ export const Leaf = ({
         width: `${width}px`,
         height: `${height}px`,
         border: `${borderWidth}px solid ${
-          activeElementId === leaf.id
-            ? activeBorderColor.light
-            : inactiveBorderColor.light
+          activeElementId === leaf.id ? activeBorderColor : inactiveBorderColor
         }`,
         borderRadius: `${borderRadius}px`,
       }}
