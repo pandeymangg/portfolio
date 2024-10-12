@@ -1,10 +1,12 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { cn } from "../lib/cn";
 import { Child, TWindowManagerConfig } from "../types";
-import { EllipsisVerticalIcon, XIcon } from "lucide-react";
+import { EllipsisVerticalIcon, GripVerticalIcon, XIcon } from "lucide-react";
 import { getComponentLabelById } from "../lib/utils";
 import { motion } from "framer-motion";
 import { useAppContext } from "@/hooks/useAppContext";
+import { useDraggable, useDroppable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 
 interface LeafProps {
   leaf: Child;
@@ -31,16 +33,15 @@ export const Leaf = ({
   componentStack,
   onReArrange,
   windowManagerConfig,
-  isRow,
-}: LeafProps) => {
+}: // isRow,
+LeafProps) => {
   const { theme } = useAppContext();
   const [contextMenuOpened, setContextMenuOpened] = useState(false);
-  const leafRef = useRef<HTMLDivElement>(null);
   const { borderRadius, borderWidth } = windowManagerConfig;
 
   // Determine size prop for animation
-  const sizeProp = isRow ? "width" : "height";
-  const sizeValue = isRow ? width : height;
+  // const sizeProp = isRow ? "width" : "height";
+  // const sizeValue = isRow ? width : height;
 
   const activeBorderColor = useMemo(() => {
     return theme === "dark"
@@ -62,12 +63,40 @@ export const Leaf = ({
     theme,
   ]);
 
+  // Draggable hook
+  const {
+    attributes: dragAttributes,
+    listeners,
+    setNodeRef: setDraggableNodeRef,
+    transform,
+  } = useDraggable({
+    id: leaf.id,
+    data: { type: "leaf", id: leaf.id },
+  });
+
+  // Droppable hook
+  const { setNodeRef: setDroppableNodeRef } = useDroppable({
+    id: leaf.id,
+    data: { type: "leaf", id: leaf.id },
+  });
+
+  // Combine refs
+  const setNodeRef = (node: HTMLElement | null) => {
+    setDraggableNodeRef(node);
+    setDroppableNodeRef(node);
+  };
+
+  const style = {
+    transition: "transform 100ms ease",
+    transform: CSS.Translate.toString(transform),
+  };
+
   return (
     <motion.div
       key={leaf.id}
-      ref={leafRef}
       className={cn("overflow-hidden transition-colors duration-300")}
       style={{
+        ...style,
         position: "relative",
         width: `${width}px`,
         height: `${height}px`,
@@ -79,11 +108,12 @@ export const Leaf = ({
       onMouseEnter={() => setActiveElementId(leaf.id)}
       onMouseLeave={() => setActiveElementId("")}
       // Animation Props
-      initial={{ [sizeProp]: 0, opacity: 0 }}
-      animate={{ [sizeProp]: sizeValue, opacity: 1 }}
-      exit={{ [sizeProp]: 0, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      layout
+      // initial={{ [sizeProp]: 0, opacity: 0 }}
+      // animate={{ [sizeProp]: sizeValue, opacity: 1 }}
+      // exit={{ [sizeProp]: 0, opacity: 0 }}
+      // transition={{ duration: 0.3 }}
+      // layout
+      ref={setNodeRef}
     >
       <div className="h-6 px-4 py-2 flex items-center gap-2 bg-bgSecondary">
         <button
@@ -136,6 +166,15 @@ export const Leaf = ({
             </div>
           )}
         </div>
+
+        {/* Drag Handle */}
+        <button
+          className="drag-handle flex items-center justify-center"
+          {...dragAttributes}
+          {...listeners} // Attach drag listeners to the handle
+        >
+          <GripVerticalIcon className="h-4 w-4 text-textPrimary" />
+        </button>
 
         <button
           className="text-textPrimary"
