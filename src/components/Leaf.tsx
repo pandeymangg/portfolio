@@ -1,11 +1,11 @@
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "../lib/cn";
 import { Child, TWindowManagerConfig } from "../types";
 import { XIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAppContext } from "@/hooks/useAppContext";
-import { useDraggable, useDroppable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+import { useDraggable, useDroppable } from "@dnd-kit/core";
 
 interface LeafProps {
   leaf: Child;
@@ -14,11 +14,13 @@ interface LeafProps {
   width: number;
   height: number;
   setWidth: (width: number) => void;
+  setHeight: (height: number) => void;
   onDelete: (id: string) => void;
   onReArrange?: (source: string, destination: string) => void;
   componentStack?: Array<string>;
   windowManagerConfig: TWindowManagerConfig;
   isRow: boolean;
+  disableResize?: boolean;
 }
 
 export const Leaf = ({
@@ -27,14 +29,20 @@ export const Leaf = ({
   onDelete,
   setActiveElementId,
   height,
+  setHeight,
   width,
   setWidth,
   windowManagerConfig,
+  disableResize = true,
+  isRow,
 }: // isRow,
 LeafProps) => {
   const { theme } = useAppContext();
   const { borderRadius, borderWidth } = windowManagerConfig;
   const leafRef = useRef<HTMLElement>();
+  const [isResizing, setIsResizing] = useState(false);
+  const [oldX, setOldX] = useState(0);
+  const [oldY, setOldY] = useState(0);
 
   // Determine size prop for animation
   // const sizeProp = isRow ? "width" : "height";
@@ -92,32 +100,94 @@ LeafProps) => {
     transform: CSS.Translate.toString(transform),
   };
 
+  useEffect(() => {
+    if (disableResize) return;
+
+    if (isResizing) {
+      const html = document.querySelector("html");
+
+      if (html) {
+        html.classList.add("select-none");
+      }
+
+      const handleMouseMove = (e: MouseEvent) => {
+        e.preventDefault();
+        if (isResizing) {
+          setOldX(0);
+          setOldY(0);
+
+          if (isRow) {
+            if (e.pageX < oldX) {
+              setWidth(-2);
+            } else {
+              setWidth(2);
+            }
+
+            setOldX(e.pageX);
+          } else {
+            //column split
+            // direction is bottom:
+            if (e.pageY > oldY) {
+              setHeight(2);
+            } else {
+              setHeight(-2);
+            }
+
+            setOldY(e.pageY);
+          }
+        }
+      };
+
+      const handleMouseUp = () => {
+        if (isResizing) {
+          setIsResizing(false);
+        }
+      };
+
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        const html = document.querySelector("html");
+        if (html) {
+          html.classList.remove("select-none");
+        }
+      };
+    } else {
+      const html = document.querySelector("html");
+      if (html) {
+        html.classList.remove("select-none");
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isResizing, setWidth]);
+
   return (
     <motion.div
       key={leaf.id}
       className={cn(
-        "overflow-hidden transition-colors duration-300",
+        "overflow-hidden transition-colors duration-300 relative",
         isDragging ? "bg-bgPrimary" : "bg-transparent",
-        isDragging ? "z-20" : "z-10"
+        isDragging ? "z-20" : "z-10",
+        isOver && "shadow-xl dark:shadow-slate-100"
       )}
       style={{
         position: "relative",
         width: `${width}px`,
         height: `${height}px`,
         border: `${borderWidth}px solid ${
-          activeElementId === leaf.id
-            ? activeBorderColor
-            : isOver
-            ? "green"
-            : inactiveBorderColor
+          activeElementId === leaf.id ? activeBorderColor : inactiveBorderColor
         }`,
         borderRadius: `${borderRadius}px`,
         ...style,
       }}
       onMouseEnter={() => {
-        if (isOver) {
-          return;
-        }
+        // if (isOver) {
+        //   return;
+        // }
         setActiveElementId(leaf.id);
       }}
       onMouseLeave={() => setActiveElementId("")}
@@ -128,7 +198,6 @@ LeafProps) => {
       // transition={{ duration: 0.3 }}
       // initial={{ x: 0, y: 0 }}
       // animate={{ x: 10, y: 10 }}
-      // layout="position"
       ref={setNodeRef}
     >
       <div className="h-6 px-4 py-2 flex items-center gap-2 bg-bgSecondary">
@@ -141,25 +210,26 @@ LeafProps) => {
           <XIcon className="h-2 w-2" />
         </button>
 
-        {/* Drag Handle */}
-
-        <button
-          className="text-textPrimary"
-          onClick={() => {
-            setWidth(10);
+        <div
+          className={cn(
+            disableResize && "hidden",
+            "absolute w-1",
+            isRow ? "cursor-col-resize" : "cursor-row-resize",
+            isRow
+              ? "right-0 top-10 bottom-0"
+              : "left-0 right-0 bottom-0 w-full h-1",
+            isDragging ? "bg-bgPrimary" : "bg-transparent"
+          )}
+          onMouseDown={(e) => {
+            setIsResizing(true);
+            e.stopPropagation(); // Prevent triggering other mouse events
           }}
-        >
-          +
-        </button>
-
-        <button className="text-textPrimary" onClick={() => setWidth(-10)}>
-          -
-        </button>
+        />
 
         <button
           className="drag-handle flex flex-1 h-full items-center justify-center"
           {...dragAttributes}
-          {...listeners} // Attach drag listeners to the handle
+          {...listeners}
         ></button>
       </div>
       {leaf.component}

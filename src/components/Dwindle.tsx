@@ -96,11 +96,15 @@ const Dwindle: React.FC<DwindleProps> = ({
           setWidth={(width) => {
             setLeafWidth(leafWidth + width);
           }}
+          setHeight={(height) => {
+            setLeafHeight(leafHeight + height);
+          }}
           onDelete={onDelete}
           componentStack={componentStack}
           onReArrange={onReArrange}
           windowManagerConfig={windowManagerConfig}
           isRow={isRow}
+          disableResize={false}
         />
       </AnimatePresence>
 
@@ -114,6 +118,9 @@ const Dwindle: React.FC<DwindleProps> = ({
             height={flexDirection === "row" ? height : height - leafHeight}
             setWidth={(width) => {
               setLeafWidth(leafWidth - width);
+            }}
+            setHeight={(height) => {
+              setLeafHeight(leafHeight - height);
             }}
             onDelete={onDelete}
             componentStack={componentStack}
