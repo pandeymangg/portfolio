@@ -114,8 +114,8 @@ const Dwindle: React.FC<DwindleProps> = ({
             activeElementId={activeElementId}
             setActiveElementId={setActiveElementId}
             leaf={rootOrChild as Child}
-            width={flexDirection === "row" ? width - leafWidth : width}
-            height={flexDirection === "row" ? height : height - leafHeight}
+            width={flexDirection === "row" ? width - leafWidth : leafWidth}
+            height={flexDirection === "row" ? leafHeight : height - leafHeight}
             setWidth={(width) => {
               setLeafWidth(leafWidth - width);
             }}
@@ -132,8 +132,8 @@ const Dwindle: React.FC<DwindleProps> = ({
           <Dwindle
             config={rootOrChild as Root}
             windowManagerConfig={windowManagerConfig}
-            width={flexDirection === "row" ? width - leafWidth : width}
-            height={flexDirection === "row" ? height : height - leafHeight}
+            width={flexDirection === "row" ? width - leafWidth : leafWidth}
+            height={flexDirection === "row" ? leafHeight : height - leafHeight}
             onDelete={onDelete}
             componentStack={componentStack}
             onReArrange={onReArrange}

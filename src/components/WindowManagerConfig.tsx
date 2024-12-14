@@ -111,15 +111,21 @@ export const WindowManagerConfig = ({
                 id="activeBorderColor"
                 name="activeBorderColor"
                 value={activeBorderColor}
-                onChange={(e) =>
+                onChange={(e) => {
+                  const newColor =
+                    theme === "dark"
+                      ? { dark: e.target.value }
+                      : {
+                          light: e.target.value,
+                        };
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
                     activeBorderColor: {
                       ...prev.activeBorderColor,
-                      light: e.target.value,
+                      ...newColor,
                     },
-                  }))
-                }
+                  }));
+                }}
               />
             </div>
 
@@ -131,15 +137,21 @@ export const WindowManagerConfig = ({
                 id="inactiveBorderColor"
                 name="inactiveBorderColor"
                 value={inactiveBorderColor}
-                onChange={(e) =>
+                onChange={(e) => {
+                  const newColor =
+                    theme === "dark"
+                      ? { dark: e.target.value }
+                      : {
+                          light: e.target.value,
+                        };
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
                     inactiveBorderColor: {
                       ...prev.inactiveBorderColor,
-                      light: e.target.value,
+                      ...newColor,
                     },
-                  }))
-                }
+                  }));
+                }}
               />
             </div>
 

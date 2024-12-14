@@ -119,11 +119,11 @@ LeafProps) => {
           if (isRow) {
             if (e.pageX < oldX) {
               setWidth(-2);
+              setHeight(0);
             } else {
               setWidth(2);
+              setHeight(0);
             }
-
-            setOldX(e.pageX);
           } else {
             //column split
             // direction is bottom:
@@ -132,9 +132,10 @@ LeafProps) => {
             } else {
               setHeight(-2);
             }
-
-            setOldY(e.pageY);
           }
+
+          setOldX(e.pageX);
+          setOldY(e.pageY);
         }
       };
 
