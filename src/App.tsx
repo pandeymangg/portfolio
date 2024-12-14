@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Nav } from "./components/Nav";
-import { addComponent, getConfig } from "./lib/dwindle";
+import { addComponent, getConfig, removeComponent } from "./lib/dwindle";
 import { INITIAL_CONFIG } from "./lib/constants";
 import { Root, TWindowManagerConfig } from "./types";
 import { Ascii } from "./components/Ascii";
@@ -63,8 +63,20 @@ function App() {
           }}
           onItemChange={(item) => {
             if (componentStack.includes(item.id)) {
+              setConfig((prev) => {
+                const updatedConfig = removeComponent(prev, item.id);
+                if (updatedConfig) {
+                  return updatedConfig;
+                }
+
+                return prev;
+              });
+
+              setComponentStack((prev) => prev.filter((i) => i !== item.id));
+
               return;
             }
+
             const component = getComponentById(item.id);
             if (component) {
               setConfig(

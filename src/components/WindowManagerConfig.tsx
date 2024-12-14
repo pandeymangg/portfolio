@@ -170,7 +170,6 @@ export const WindowManagerConfig = ({
                 onChange={(e) => {
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
-
                     borderWidth: parseInt(e.target.value),
                   }));
                 }}

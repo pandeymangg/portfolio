@@ -124,7 +124,7 @@ export const Nav = ({
               className={cn(
                 "px-3 py-1 rounded-full flex items-center gap-2 text-sm",
                 componentStack.includes(item.id)
-                  ? "bg-bgPrimary"
+                  ? "bg-bgTertiary"
                   : "bg-bgSecondary"
               )}
               onClick={() => {

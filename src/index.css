@@ -14,6 +14,7 @@ main {
 :root {
   --bg-primary: #fbfbfb;
   --bg-secondary: #f0f0f0;
+  --bg-tertiary: #f2e9e1;
   --text-primary: #282828;
   --text-secondary: #3c3836;
   --border-primary: #7c6f64;
@@ -24,6 +25,7 @@ main {
 .dark {
   --bg-primary: #101010;
   --bg-secondary: #121212;
+  --bg-tertiary: #393552;
   --text-primary: #e0def4;
   --text-secondary: #908caa;
   --border-primary: #524f67;
