@@ -1,7 +1,8 @@
+import { useAppContext } from "@/hooks/useAppContext";
 import { TFloatingConfig, TWindowManagerConfig } from "@/types";
 import { useDraggable } from "@dnd-kit/core";
 import { XIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface FloatElementProps {
   component: React.ReactNode;
@@ -22,6 +23,7 @@ export const FloatElement = ({
   floatingConfig,
   setFloatingConfig,
 }: FloatElementProps) => {
+  const { theme } = useAppContext();
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: componentStack[index],
   });
@@ -126,6 +128,28 @@ export const FloatElement = ({
     }
   }, [componentId, isResizing, setFloatingConfig]);
 
+  const borderColor = useMemo(() => {
+    // If the component is the topmost in the stack, use the activeBorderColor
+    if (componentStack[componentStack.length - 1] === componentId) {
+      return theme === "dark"
+        ? windowManagerConfig.activeBorderColor.dark
+        : windowManagerConfig.activeBorderColor.light;
+    }
+
+    // Otherwise, use the inactiveBorderColor
+    return theme === "dark"
+      ? windowManagerConfig.inactiveBorderColor.dark
+      : windowManagerConfig.inactiveBorderColor.light;
+  }, [
+    componentId,
+    componentStack,
+    theme,
+    windowManagerConfig.activeBorderColor.dark,
+    windowManagerConfig.activeBorderColor.light,
+    windowManagerConfig.inactiveBorderColor.dark,
+    windowManagerConfig.inactiveBorderColor.light,
+  ]);
+
   return (
     <div
       className="bg-bgPrimary"
@@ -133,7 +157,7 @@ export const FloatElement = ({
         ...style,
         borderRadius: windowManagerConfig.borderRadius,
         borderWidth: windowManagerConfig.borderWidth,
-        borderColor: windowManagerConfig.activeBorderColor.light,
+        borderColor,
         zIndex: index + 1,
         width,
         height,

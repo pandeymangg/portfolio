@@ -49,7 +49,7 @@ export const FloatDroppable = ({
     <div
       ref={setNodeRef}
       style={{
-        ...(componentStack.length && { backdropFilter: "blur(10px)" }),
+        backdropFilter: componentStack.length > 0 ? "blur(10px)" : "none",
       }}
       className="flex-1 py-2"
     >

@@ -16,7 +16,10 @@ import { Float } from "./components/Float";
 
 function App() {
   const { theme } = useAppContext();
-  const [componentStack, setComponentStack] = useState<Array<string>>([]);
+  const [componentStack, setComponentStack] = useLocalStorage<Array<string>>(
+    "componentStack",
+    []
+  );
 
   const [config, setConfig] = useState<Root>(INITIAL_CONFIG);
   const [isConfigDialogOpen, setIsConfigDialogOpen] = useState(false);
