@@ -35,8 +35,7 @@ export const Leaf = ({
   windowManagerConfig,
   disableResize = true,
   isRow,
-}: // isRow,
-LeafProps) => {
+}: LeafProps) => {
   const { theme } = useAppContext();
   const { borderRadius, borderWidth } = windowManagerConfig;
   const leafRef = useRef<HTMLElement>();

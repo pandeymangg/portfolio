@@ -18,3 +18,13 @@ export type TabItem = {
 };
 
 export type TWindowManagerConfig = typeof DEFAULT_WINDOW_MANAGER_CONFIG;
+
+export type TFloatingConfig = {
+  id: string;
+  position: {
+    x: number;
+    y: number;
+  };
+  width: number;
+  height: number;
+};

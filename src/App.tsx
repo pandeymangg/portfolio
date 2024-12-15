@@ -12,6 +12,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import { useAppContext } from "./hooks/useAppContext";
 import { DndContext } from "@dnd-kit/core";
 import { DwindleWrapper } from "./components/DwindleWrapper";
+import { Float } from "./components/Float";
 
 function App() {
   const { theme } = useAppContext();
@@ -92,49 +93,59 @@ function App() {
           }}
           componentStack={componentStack}
         />
+        {windowManagerConfig.tiling ? (
+          <DndContext
+            onDragEnd={(event) => {
+              const from = event.active.id as string;
+              const to = event.over?.id as string;
 
-        <DndContext
-          onDragEnd={(event) => {
-            const from = event.active.id as string;
-            const to = event.over?.id as string;
+              if (!to) return;
+              if (from === to) return;
 
-            if (!to) return;
-            if (from === to) return;
+              if (
+                componentStack.includes(from) &&
+                componentStack.includes(to)
+              ) {
+                const newComponentStack = componentStack.map((item) => {
+                  if (item === from) {
+                    return to;
+                  }
+                  if (item === to) {
+                    return from;
+                  }
+                  return item;
+                });
 
-            if (componentStack.includes(from) && componentStack.includes(to)) {
-              const newComponentStack = componentStack.map((item) => {
-                if (item === from) {
-                  return to;
-                }
-                if (item === to) {
-                  return from;
-                }
-                return item;
-              });
-
-              setComponentStack(newComponentStack);
-              setConfig(
-                getConfig(
-                  newComponentStack.map((item) => ({
-                    component: getComponentById(item),
-                    id: item,
-                  }))
-                )
-              );
-            } else {
-              console.error("Invalid re-arrangement");
-              return;
-            }
-          }}
-        >
-          <DwindleWrapper
-            config={config}
-            setConfig={setConfig}
+                setComponentStack(newComponentStack);
+                setConfig(
+                  getConfig(
+                    newComponentStack.map((item) => ({
+                      component: getComponentById(item),
+                      id: item,
+                    }))
+                  )
+                );
+              } else {
+                console.error("Invalid re-arrangement");
+                return;
+              }
+            }}
+          >
+            <DwindleWrapper
+              config={config}
+              setConfig={setConfig}
+              componentStack={componentStack}
+              setComponentStack={setComponentStack}
+              windowManagerConfig={windowManagerConfig}
+            />
+          </DndContext>
+        ) : (
+          <Float
             componentStack={componentStack}
             setComponentStack={setComponentStack}
             windowManagerConfig={windowManagerConfig}
           />
-        </DndContext>
+        )}
 
         <WindowManagerConfig
           open={isConfigDialogOpen}

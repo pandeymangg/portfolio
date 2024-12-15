@@ -10,4 +10,5 @@ export const DEFAULT_WINDOW_MANAGER_CONFIG = {
   gap: 4,
   borderRadius: 10,
   borderWidth: 2,
+  tiling: true,
 };

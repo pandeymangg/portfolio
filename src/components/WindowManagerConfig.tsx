@@ -55,15 +55,15 @@ export const WindowManagerConfig = ({
       <DialogContent className="text-textPrimary bg-bgSecondary border border-borderPrimary fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
         <DialogHeader>
           <DialogTitle className="text-textPrimary">
-            Window manager Configuration
+            Window manager configuration
           </DialogTitle>
           <DialogDescription className="text-textPrimary">
             Configure the appearance of the Window manager
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-4 py-4">
-          {/* border radius */}
           <div className="flex flex-col gap-4">
+            {/* border radius */}
             <div className="flex flex-col gap-2">
               <label htmlFor="borderRadius">Border radius</label>
               <input
@@ -72,7 +72,7 @@ export const WindowManagerConfig = ({
                 name="borderRadius"
                 min="0"
                 max="50"
-                className="accent-orange"
+                className="accent-orange cursor-pointer"
                 value={localWindowManagerConfig.borderRadius}
                 onChange={(e) =>
                   setLocalWindowManagerConfig((prev) => ({
@@ -92,7 +92,7 @@ export const WindowManagerConfig = ({
                 name="gap"
                 min="0"
                 max="50"
-                className="accent-orange"
+                className="accent-orange cursor-pointer"
                 value={localWindowManagerConfig.gap}
                 onChange={(e) => {
                   setLocalWindowManagerConfig((prev) => ({
@@ -111,6 +111,7 @@ export const WindowManagerConfig = ({
                 id="activeBorderColor"
                 name="activeBorderColor"
                 value={activeBorderColor}
+                className="cursor-pointer"
                 onChange={(e) => {
                   const newColor =
                     theme === "dark"
@@ -137,6 +138,7 @@ export const WindowManagerConfig = ({
                 id="inactiveBorderColor"
                 name="inactiveBorderColor"
                 value={inactiveBorderColor}
+                className="cursor-pointer"
                 onChange={(e) => {
                   const newColor =
                     theme === "dark"
@@ -165,7 +167,7 @@ export const WindowManagerConfig = ({
                 name="borderWidth"
                 min="0"
                 max="10"
-                className="accent-orange"
+                className="accent-orange cursor-pointer"
                 value={localWindowManagerConfig.borderWidth}
                 onChange={(e) => {
                   setLocalWindowManagerConfig((prev) => ({
@@ -174,6 +176,23 @@ export const WindowManagerConfig = ({
                   }));
                 }}
               />
+            </div>
+
+            {/* tiling */}
+            <div className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                id="tiling"
+                name="tiling"
+                checked={localWindowManagerConfig.tiling}
+                onChange={(e) => {
+                  setLocalWindowManagerConfig((prev) => ({
+                    ...prev,
+                    tiling: e.target.checked,
+                  }));
+                }}
+              />
+              <label htmlFor="tiling">Tiling</label>
             </div>
           </div>
         </div>
