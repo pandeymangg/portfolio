@@ -1,7 +1,7 @@
-import { Home } from "../components/Home";
-import { Links } from "../components/Links";
-import { Projects } from "../components/Projects";
-import { Work } from "../components/Work";
+import { Home } from "../components/windows/Home";
+import { Links } from "../components/windows/Links";
+import { Projects } from "../components/windows/Projects";
+import { Work } from "../components/windows/Work";
 
 export const getComponentById = (id: string) => {
   switch (id) {
