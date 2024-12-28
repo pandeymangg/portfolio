@@ -25,7 +25,7 @@ export const Projects = () => {
         </p>
       </div>
 
-      <div className="my-4">
+      <div className="md:my-4">
         <h3 className="text-textPrimary text-xl font-semibold">
           <a
             href="https://yt-pl-len.vercel.app/"

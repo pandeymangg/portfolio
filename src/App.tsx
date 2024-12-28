@@ -186,23 +186,26 @@ const App = () => {
             </div>
           </div>
         </nav>
-        <div className="flex flex-col gap-10">
-          <div className="flex items-center justify-center">
-            <img
-              src={imageUrl}
-              alt="Anshuman Pandey"
-              className="rounded-full h-40 w-40 border-4 border-orange"
-            />
+
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center justify-center">
+              <img
+                src={imageUrl}
+                alt="Anshuman Pandey"
+                className="rounded-full h-40 w-40 border-4 border-orange"
+              />
+            </div>
+            <h1 className="text-center text-textPrimary text-2xl font-bold">
+              Hey, I'm Anshuman Pandey
+            </h1>
           </div>
-          <h1 className="text-center text-textPrimary text-2xl font-bold">
-            Hey, I'm Anshuman Pandey
-          </h1>
-        </div>
-        <div className="flex flex-col px-8">
-          <Home />
-          <Work />
-          <Projects />
-          <Links />
+          <div className="flex flex-col px-8 gap-6">
+            <Home />
+            <Work />
+            <Projects />
+            <Links />
+          </div>
         </div>
       </div>
     </main>
