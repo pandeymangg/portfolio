@@ -4,7 +4,7 @@ import { addComponent, getConfig, removeComponent } from "./lib/dwindle";
 import { INITIAL_CONFIG } from "./lib/constants";
 import { Root, TWindowManagerConfig } from "./types";
 import { Ascii } from "./components/Ascii";
-import { LayoutPanelLeftIcon } from "lucide-react";
+import { LayoutPanelLeftIcon, MoonIcon, SunIcon } from "lucide-react";
 import { DEFAULT_WINDOW_MANAGER_CONFIG } from "./lib/wmConfig";
 import { getComponentById } from "./lib/utils";
 import { WindowManagerConfig } from "./components/WindowManagerConfig";
@@ -13,9 +13,14 @@ import { useAppContext } from "./hooks/useAppContext";
 import { DndContext } from "@dnd-kit/core";
 import { DwindleWrapper } from "./components/DwindleWrapper";
 import { Float } from "./components/Float";
+import { Home } from "./components/windows/Home";
+import { Work } from "./components/windows/Work";
+import { Projects } from "./components/windows/Projects";
+import { Links } from "./components/windows/Links";
+import imageUrl from "./assets/pandeyman.jpeg";
 
 const App = () => {
-  const { theme } = useAppContext();
+  const { theme, setTheme } = useAppContext();
   const [componentStack, setComponentStack] = useState<Array<string>>([]);
 
   const [config, setConfig] = useState<Root>(INITIAL_CONFIG);
@@ -38,8 +43,8 @@ const App = () => {
   }, [theme]);
 
   return (
-    <main className="h-screen w-screen overflow-hidden bg-bgPrimary relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+    <main className="h-screen w-screen md:overflow-hidden bg-bgPrimary relative">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block">
         <Ascii />
 
         <div className="text-center text-textSecondary text-sm mt-2">
@@ -54,7 +59,7 @@ const App = () => {
       </div>
 
       <div
-        className={`mx-auto max-w-screen-xl 2xl:max-w-screen-2xl flex flex-col gap-2 h-full w-full py-4 z-20 ${
+        className={`mx-auto max-w-screen-xl 2xl:max-w-screen-2xl flex-col gap-2 h-full w-full py-4 z-20 hidden md:flex ${
           config.leaves.length === 0 ? "" : "relative"
         }`}
       >
@@ -93,6 +98,7 @@ const App = () => {
           }}
           componentStack={componentStack}
         />
+
         {windowManagerConfig.tiling ? (
           <DndContext
             onDragEnd={(event) => {
@@ -153,6 +159,51 @@ const App = () => {
           windowManagerConfig={windowManagerConfig}
           setWindowManagerConfig={setWindowManagerConfig}
         />
+      </div>
+
+      <div className="md:hidden">
+        {/* mobile nav */}
+        <nav className="sticky top-0 z-50 mx-auto my-0 bg-bgPrimary h-20 flex items-center justify-center">
+          <div className="w-full flex items-center justify-between max-w-xs">
+            <h1 className="text-center text-textPrimary text-lg font-bold">
+              Anshuman Pandey
+            </h1>
+
+            <div>
+              <button>
+                {theme === "dark" ? (
+                  <SunIcon
+                    onClick={() => setTheme("light")}
+                    className="text-customRed w-4 h-4"
+                  />
+                ) : (
+                  <MoonIcon
+                    onClick={() => setTheme("dark")}
+                    className="text-customRed w-4 h-4"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+        </nav>
+        <div className="flex flex-col gap-10">
+          <div className="flex items-center justify-center">
+            <img
+              src={imageUrl}
+              alt="Anshuman Pandey"
+              className="rounded-full h-40 w-40 border-4 border-orange"
+            />
+          </div>
+          <h1 className="text-center text-textPrimary text-2xl font-bold">
+            Hey, I'm Anshuman Pandey
+          </h1>
+        </div>
+        <div className="flex flex-col px-8">
+          <Home />
+          <Work />
+          <Projects />
+          <Links />
+        </div>
       </div>
     </main>
   );

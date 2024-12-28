@@ -1,13 +1,13 @@
 export const Work = () => {
   return (
-    <div className="px-4 pt-4 h-full max-h-full overflow-auto mb-4">
+    <div className="md:px-4 md:pt-4 h-full max-h-full overflow-auto md:mb-4">
       <div className="flex items-center">
         <h2 className="text-textPrimary text-2xl font-bold">
           Work Experience 🚀
         </h2>
       </div>
 
-      <div className="flex flex-col mb-10">
+      <div className="flex flex-col md:mb-10">
         <div className="mt-4">
           <h3 className="text-textPrimary text-xl font-semibold">
             Formbricks | Full Stack Dev

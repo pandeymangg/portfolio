@@ -1,9 +1,11 @@
 export const Home = () => {
   return (
-    <div className="px-4 py-4 h-full max-h-full overflow-auto">
-      <h2 className="text-textPrimary text-2xl font-bold">About Me! 👋</h2>
+    <div className="md:px-4 md:py-4 h-full max-h-full overflow-auto">
+      <h2 className="text-textPrimary text-2xl font-bold hidden md:block">
+        About Me! 👋
+      </h2>
 
-      <p className="text-textPrimary text-base my-4">
+      <p className="text-textPrimary text-base md:my-4">
         Hey there! I’m a software engineer with a passion for building intuitive
         user experiences and seamless web applications. Over the years, I've
         enjoyed diving into a wide range of technologies—from JavaScript to C++,

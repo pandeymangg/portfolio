@@ -1,6 +1,6 @@
 export const Projects = () => {
   return (
-    <div className="px-4 pt-4 h-full max-h-full overflow-auto">
+    <div className="md:px-4 md:pt-4 h-full max-h-full overflow-auto">
       <div className="flex items-center mb-4">
         <h2 className="text-textPrimary text-2xl font-bold">Projects 🛠️</h2>
       </div>
