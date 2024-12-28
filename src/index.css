@@ -32,3 +32,18 @@ main {
   --custom-red: #ff8080;
   --orange: #ffc799;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+}

@@ -9,6 +9,7 @@ import {
 } from "./ui/dialog";
 import { TWindowManagerConfig } from "@/types";
 import { useAppContext } from "@/hooks/useAppContext";
+import { Switch } from "./ui/switch";
 
 interface WindowManagerConfigProps {
   open: boolean;
@@ -180,15 +181,12 @@ export const WindowManagerConfig = ({
 
             {/* tiling */}
             <div className="flex gap-2 items-center">
-              <input
-                type="checkbox"
-                id="tiling"
-                name="tiling"
+              <Switch
                 checked={localWindowManagerConfig.tiling}
-                onChange={(e) => {
+                onCheckedChange={(checked) => {
                   setLocalWindowManagerConfig((prev) => ({
                     ...prev,
-                    tiling: e.target.checked,
+                    tiling: checked,
                   }));
                 }}
               />
