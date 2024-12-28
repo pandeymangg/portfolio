@@ -199,11 +199,12 @@ export const FloatElement = ({
           }}
         ></button>
       </div>
+
       {component}
 
       {/* Right resize handle */}
       <div
-        className={`absolute w-1 right-0 top-10 bottom-0 bg-bgPrimary cursor-col-resize`}
+        className={`absolute w-1 right-0 top-10 bottom-0 bg-transparent cursor-col-resize`}
         onMouseDown={(e) => {
           setIsResizing({
             right: true,
@@ -215,11 +216,11 @@ export const FloatElement = ({
           });
           e.stopPropagation();
         }}
-      ></div>
+      />
 
       {/* Bottom resize handle */}
       <div
-        className={`absolute h-1 left-0 right-0 bottom-0 bg-bgPrimary cursor-row-resize`}
+        className={`absolute h-1 left-0 right-0 bottom-0 bg-transparent cursor-row-resize`}
         onMouseDown={(e) => {
           setIsResizing({
             right: false,
@@ -231,7 +232,7 @@ export const FloatElement = ({
           });
           e.stopPropagation();
         }}
-      ></div>
+      />
     </div>
   );
 };
