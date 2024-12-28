@@ -14,12 +14,9 @@ import { DndContext } from "@dnd-kit/core";
 import { DwindleWrapper } from "./components/DwindleWrapper";
 import { Float } from "./components/Float";
 
-function App() {
+const App = () => {
   const { theme } = useAppContext();
-  const [componentStack, setComponentStack] = useLocalStorage<Array<string>>(
-    "componentStack",
-    []
-  );
+  const [componentStack, setComponentStack] = useState<Array<string>>([]);
 
   const [config, setConfig] = useState<Root>(INITIAL_CONFIG);
   const [isConfigDialogOpen, setIsConfigDialogOpen] = useState(false);
@@ -159,6 +156,6 @@ function App() {
       </div>
     </main>
   );
-}
+};
 
 export default App;
