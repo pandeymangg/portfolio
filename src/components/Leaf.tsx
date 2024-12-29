@@ -40,12 +40,6 @@ export const Leaf = ({
   const { borderRadius, borderWidth } = windowManagerConfig;
   const leafRef = useRef<HTMLElement>();
   const [isResizing, setIsResizing] = useState(false);
-  const [oldX, setOldX] = useState(0);
-  const [oldY, setOldY] = useState(0);
-
-  // Determine size prop for animation
-  // const sizeProp = isRow ? "width" : "height";
-  // const sizeValue = isRow ? width : height;
 
   const activeBorderColor = useMemo(() => {
     return theme === "dark"
@@ -112,29 +106,12 @@ export const Leaf = ({
       const handleMouseMove = (e: MouseEvent) => {
         e.preventDefault();
         if (isResizing) {
-          setOldX(0);
-          setOldY(0);
-
+          // change the width or height based on the direction
           if (isRow) {
-            if (e.pageX < oldX) {
-              setWidth(-2);
-              setHeight(0);
-            } else {
-              setWidth(2);
-              setHeight(0);
-            }
+            setWidth(e.movementX);
           } else {
-            //column split
-            // direction is bottom:
-            if (e.pageY > oldY) {
-              setHeight(2);
-            } else {
-              setHeight(-2);
-            }
+            setHeight(e.movementY);
           }
-
-          setOldX(e.pageX);
-          setOldY(e.pageY);
         }
       };
 
@@ -172,7 +149,7 @@ export const Leaf = ({
         "overflow-hidden transition-colors duration-300 relative",
         isDragging ? "bg-bgPrimary" : "bg-transparent",
         isDragging ? "z-20" : "z-10",
-        isOver && "shadow-xl dark:shadow-slate-100"
+        isOver && "shadow-xl dark:shadow-slate-100",
       )}
       style={{
         position: "relative",
@@ -218,7 +195,7 @@ export const Leaf = ({
             isRow
               ? "right-0 top-10 bottom-0"
               : "left-0 right-0 bottom-0 w-full h-1",
-            isDragging ? "bg-bgPrimary" : "bg-transparent"
+            isDragging ? "bg-bgPrimary" : "bg-transparent",
           )}
           onMouseDown={(e) => {
             setIsResizing(true);

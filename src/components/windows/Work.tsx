@@ -1,14 +1,14 @@
 export const Work = () => {
   return (
-    <div className="md:px-4 md:pt-4 h-full max-h-full overflow-auto md:mb-4">
+    <div className="md:px-4 md:py-4 h-full max-h-full flex flex-col gap-4 overflow-auto">
       <div className="flex items-center">
         <h2 className="text-textPrimary text-2xl font-bold">
           Work Experience 🚀
         </h2>
       </div>
 
-      <div className="flex flex-col md:mb-10">
-        <div className="mt-4">
+      <div className="flex flex-col gap-4 md:mb-4">
+        <div>
           <h3 className="text-textPrimary text-xl font-semibold">
             Formbricks | Full Stack Dev
           </h3>
@@ -40,8 +40,7 @@ export const Work = () => {
           </ul>
         </div>
 
-        {/* Tealfeed Internship */}
-        <div className="mt-6">
+        <div>
           <h3 className="text-textPrimary text-xl font-semibold">
             Tealfeed | Software Engineering Intern
           </h3>
@@ -64,8 +63,7 @@ export const Work = () => {
           </ul>
         </div>
 
-        {/* Trell Internship */}
-        <div className="mt-6">
+        <div>
           <h3 className="text-textPrimary text-xl font-semibold">
             Trell | Software Engineering Intern
           </h3>
@@ -85,8 +83,7 @@ export const Work = () => {
           </ul>
         </div>
 
-        {/* Quinn Internship */}
-        <div className="mt-6">
+        <div>
           <h3 className="text-textPrimary text-xl font-semibold">
             Quinn | Software Engineering Intern
           </h3>

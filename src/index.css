@@ -4,46 +4,54 @@
 
 html,
 body {
-  background-color: var(--bg-primary);
+    background-color: var(--bg-primary);
 }
 
 main {
-  font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 :root {
-  --bg-primary: #fbfbfb;
-  --bg-secondary: #f0f0f0;
-  --bg-tertiary: #f2e9e1;
-  --text-primary: #282828;
-  --text-secondary: #3c3836;
-  --border-primary: #7c6f64;
-  --custom-red: #9d0006;
-  --orange: #af3a03;
+    --bg-primary: #fbfbfb;
+    --bg-secondary: #f0f0f0;
+    --bg-tertiary: #f2e9e1;
+    --text-primary: #282828;
+    --text-secondary: #3c3836;
+    --border-primary: #7c6f64;
+    --custom-red: #9d0006;
+    --orange: #af3a03;
 }
 
 .dark {
-  --bg-primary: #101010;
-  --bg-secondary: #121212;
-  --bg-tertiary: #393552;
-  --text-primary: #e0def4;
-  --text-secondary: #908caa;
-  --border-primary: #524f67;
-  --custom-red: #ff8080;
-  --orange: #ffc799;
+    --bg-primary: #101010;
+    --bg-secondary: #121212;
+    --bg-tertiary: #393552;
+    --text-primary: #e0def4;
+    --text-secondary: #908caa;
+    --border-primary: #524f67;
+    --custom-red: #ff8080;
+    --orange: #ffc799;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+    background: var(--bg-primary);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+    background: var(--bg-tertiary);
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-webkit-color-swatch {
+    border: none;
 }
