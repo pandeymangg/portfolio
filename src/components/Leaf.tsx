@@ -149,10 +149,12 @@ export const Leaf = ({
         "overflow-hidden transition-colors duration-300 relative",
         isDragging ? "bg-bgPrimary" : "bg-transparent",
         isDragging ? "z-20" : "z-10",
-        isOver && "shadow-xl dark:shadow-slate-100",
+        isOver && "shadow-xl dark:shadow-slate-100"
       )}
       style={{
         position: "relative",
+        minWidth: "200px",
+        minHeight: "200px",
         width: `${width}px`,
         height: `${height}px`,
         border: `${borderWidth}px solid ${
@@ -195,7 +197,7 @@ export const Leaf = ({
             isRow
               ? "right-0 top-10 bottom-0"
               : "left-0 right-0 bottom-0 w-full h-1",
-            isDragging ? "bg-bgPrimary" : "bg-transparent",
+            isDragging ? "bg-bgPrimary" : "bg-transparent"
           )}
           onMouseDown={(e) => {
             setIsResizing(true);

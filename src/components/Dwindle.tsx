@@ -94,10 +94,10 @@ const Dwindle: React.FC<DwindleProps> = ({
           width={leafWidth}
           height={leafHeight}
           setWidth={(width) => {
-            setLeafWidth(leafWidth + width);
+            setLeafWidth(Math.max(200, leafWidth + width));
           }}
           setHeight={(height) => {
-            setLeafHeight(leafHeight + height);
+            setLeafHeight(Math.max(200, leafHeight + height));
           }}
           onDelete={onDelete}
           componentStack={componentStack}
@@ -117,10 +117,10 @@ const Dwindle: React.FC<DwindleProps> = ({
             width={flexDirection === "row" ? width - leafWidth : leafWidth}
             height={flexDirection === "row" ? leafHeight : height - leafHeight}
             setWidth={(width) => {
-              setLeafWidth(leafWidth - width);
+              setLeafWidth(Math.max(200, leafWidth - width));
             }}
             setHeight={(height) => {
-              setLeafHeight(leafHeight - height);
+              setLeafHeight(Math.max(200, leafHeight - height));
             }}
             onDelete={onDelete}
             componentStack={componentStack}

@@ -12,7 +12,7 @@ export const Projects = () => {
               href="https://formbricks.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:underline hover:text-pine"
+              className="hover:underline hover:text-iris"
             >
               Formbricks
             </a>
@@ -30,7 +30,7 @@ export const Projects = () => {
           <h3 className="text-textPrimary text-xl font-semibold">
             <a
               href="https://yt-pl-len.vercel.app/"
-              className="hover:underline hover:text-pine"
+              className="hover:underline hover:text-iris"
               target="_blank"
               rel="noreferrer"
             >

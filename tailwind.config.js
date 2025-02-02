@@ -11,7 +11,7 @@ export default {
         textPrimary: "var(--text-primary)",
         textSecondary: "var(--text-secondary)",
         orange: "var(--orange)",
-        pine: "#31748f",
+        iris: "var(--iris)",
         borderPrimary: "var(--border-primary)",
         customRed: "var(--custom-red)",
       },

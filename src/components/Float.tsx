@@ -29,7 +29,7 @@ export const Float = ({
         width: 500,
         height: 500,
       };
-    })
+    }),
   );
 
   useEffect(() => {

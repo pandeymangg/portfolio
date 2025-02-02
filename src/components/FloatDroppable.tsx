@@ -25,7 +25,7 @@ export const FloatDroppable = ({
 
   const components = useMemo(
     () => componentStack.map((comp) => getComponentById(comp)),
-    [componentStack]
+    [componentStack],
   );
 
   const renderComponents = () => {
@@ -48,8 +48,10 @@ export const FloatDroppable = ({
   return (
     <div
       ref={setNodeRef}
+      key={componentStack.length}
       style={{
         backdropFilter: componentStack.length > 0 ? "blur(10px)" : "none",
+        zIndex: componentStack.length > 0 ? 20 : 0,
       }}
       className="flex-1 py-2"
     >

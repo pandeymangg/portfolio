@@ -29,7 +29,7 @@ const App = () => {
   const [windowManagerConfig, setWindowManagerConfig] =
     useLocalStorage<TWindowManagerConfig>(
       "windowManagerConfig",
-      DEFAULT_WINDOW_MANAGER_CONFIG
+      DEFAULT_WINDOW_MANAGER_CONFIG,
     );
 
   useEffect(() => {
@@ -79,22 +79,22 @@ const App = () => {
               });
 
               setComponentStack((prev) => prev.filter((i) => i !== item.id));
-
               return;
             }
-
-            const component = getComponentById(item.id);
-            if (component) {
-              setConfig(
-                addComponent(config, {
-                  type: "child",
-                  id: item.id,
-                  component,
-                })
-              );
-
-              setComponentStack((prev) => [...prev, item.id]);
+            if (windowManagerConfig.tiling) {
+              const component = getComponentById(item.id);
+              if (component) {
+                setConfig(
+                  addComponent(config, {
+                    type: "child",
+                    id: item.id,
+                    component,
+                  }),
+                );
+              }
             }
+
+            setComponentStack((prev) => [...prev, item.id]);
           }}
           componentStack={componentStack}
         />
@@ -128,8 +128,8 @@ const App = () => {
                     newComponentStack.map((item) => ({
                       component: getComponentById(item),
                       id: item,
-                    }))
-                  )
+                    })),
+                  ),
                 );
               } else {
                 console.error("Invalid re-arrangement");
