@@ -25,13 +25,23 @@ export const DwindleWrapper = ({
   const [parentWidth, setParentWidth] = useState<number>(0);
 
   useEffect(() => {
-    if (parentRef.current) {
-      const { clientWidth, clientHeight } = parentRef.current;
+    if (!parentRef.current) return;
 
-      setParentHeight(clientHeight);
-      setParentWidth(clientWidth);
-    }
-  }, [parentRef]);
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (!entries || entries.length === 0) return;
+      const { width, height } = entries[0].contentRect;
+      setParentHeight(height);
+      setParentWidth(width);
+    });
+
+    resizeObserver.observe(parentRef.current);
+
+    return () => {
+      if (parentRef.current) {
+        resizeObserver.unobserve(parentRef.current);
+      }
+    };
+  }, []);
 
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
@@ -59,7 +69,6 @@ export const DwindleWrapper = ({
             const updateConfig = removeComponent(config, leafId);
             if (updateConfig) {
               setConfig(updateConfig);
-
               setComponentStack((prev) => prev.filter((id) => id !== leafId));
             }
           }}

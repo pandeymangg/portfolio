@@ -27,4 +27,5 @@ export type TFloatingConfig = {
   };
   width: number;
   height: number;
+  isOpen?: boolean;
 };

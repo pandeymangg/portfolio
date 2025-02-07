@@ -1,8 +1,7 @@
 import { TFloatingConfig, TWindowManagerConfig } from "@/types";
 import { DndContext } from "@dnd-kit/core";
 import { FloatDroppable } from "./FloatDroppable";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface FloatProps {
   componentStack: string[];
@@ -15,10 +14,7 @@ export const Float = ({
   setComponentStack,
   windowManagerConfig,
 }: FloatProps) => {
-  const [floatingConfig, setFloatingConfig] = useLocalStorage<
-    TFloatingConfig[]
-  >(
-    "floatingConfig",
+  const [floatingConfig, setFloatingConfig] = useState<TFloatingConfig[]>(
     componentStack.map((item, index) => {
       return {
         id: item,
@@ -28,8 +24,9 @@ export const Float = ({
         },
         width: 500,
         height: 500,
+        isOpen: true,
       };
-    }),
+    })
   );
 
   useEffect(() => {
