@@ -2,8 +2,7 @@
 
 A unique, interactive portfolio website inspired by tiling window managers. Built with React, TypeScript, and TailwindCSS.
 
-![Portfolio Preview]
-[Add a screenshot/GIF of your portfolio here]
+![Portfolio Preview](https://raw.githubusercontent.com/pandeymangg/portfolio/refs/heads/main/src/assets/preview.png)
 
 ## Features
 
