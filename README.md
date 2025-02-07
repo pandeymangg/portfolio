@@ -1,50 +1,71 @@
-# React + TypeScript + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A unique, interactive portfolio website inspired by tiling window managers. Built with React, TypeScript, and TailwindCSS.
 
-Currently, two official plugins are available:
+![Portfolio Preview]
+[Add a screenshot/GIF of your portfolio here]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Tiling Window Manager Interface**: Inspired by Linux tiling window managers like i3, qtile, and hyprland
+- **Interactive Windows**: Drag, resize, and rearrange windows dynamically
+- **Dark/Light Mode**: Full theme support with custom color schemes
+- **Responsive Design**: Optimized for both desktop and mobile viewing
+- **Window Manager Configuration**: Customize gap sizes, border radius, colors, enable/disable tiling, etc.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### How it Works
 
-- Configure the top-level `parserOptions` property like this:
+1. **Base Structure**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+   - Each node is either a Leaf (window) or a Root (container)
+   - Leaves contain actual components
+   - Roots contain exactly two children (either Leaf or Root)
+
+2. **Layout Algorithm**
+
+   - For 1-2 components: Create a simple root with direct leaf children
+   - For 3+ components:
+     ```
+     Root
+     ├── Leaf 1
+     └── Root
+         ├── Leaf 2
+         └── Root
+             ├── Leaf 3
+             └── ...
+     ```
+
+3. **Split Direction**
+
+   - Splits alternate between horizontal and vertical based on aspect ratio
+   - Horizontal split when width > height
+   - Vertical split when height > width
+
+4. **Features**
+   - Dynamic resizing with neighbor compensation
+   - Drag and drop window rearrangement
+   - Window removal with automatic tree rebalancing
+   - Configurable gaps and borders
+
+### Example Configuration
+
+```typescript
+{
+  type: "root",
+  id: "unique-id",
+  leaves: [
+    {
+      type: "child",
+      id: "window-1",
+      component: <Component />
     },
-  },
-})
+    {
+      type: "root",
+      id: "unique-id-2",
+      leaves: [/* more windows */]
+    }
+  ]
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+The implementation combines the efficiency of binary trees with the flexibility needed for a modern web interface, while maintaining the familiar feel of traditional tiling window managers.
