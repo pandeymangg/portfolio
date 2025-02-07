@@ -17,6 +17,12 @@ export const Home = () => {
           alternative to Typeform.
         </p>
         <p className="text-textPrimary text-base">
+          I love linux, been using it since 2016 and I actually went all the way
+          from ubuntu to arch. I'm currently using arch btw. With that came my
+          love for tiling window managers, I've tried a couple of them like i3,
+          awesome, hyprland, etc but for me qtile is the GOAT.
+        </p>
+        <p className="text-textPrimary text-base">
           This portfolio itself is a reflection of my love for efficient,
           organized design. 🖥️ Inspired by tiling window managers, it's built to
           be minimalistic, modular, and uniquely interactive—just like how I
