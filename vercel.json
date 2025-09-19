@@ -4,7 +4,13 @@
     {
       "src": "^/$",
       "has": [{ "type": "header", "key": "user-agent", "value": ".*curl.*" }],
-      "dest": "/curl.txt"
+      "dest": "/curl.txt",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "Vary": "User-Agent",
+        "Content-Type": "text/plain; charset=utf-8",
+        "X-Robots-Tag": "noindex"
+      }
     }
   ]
 }
