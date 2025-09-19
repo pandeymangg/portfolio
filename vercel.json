@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "^/$",
+      "has": [{ "type": "header", "key": "user-agent", "value": ".*curl.*" }],
+      "dest": "/curl.txt"
+    }
+  ]
+}
